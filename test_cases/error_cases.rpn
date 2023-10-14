@@ -1,0 +1,13 @@
+# Error cases tested here.
+
+# Integration test that runs this script will have to search
+# the output to find the expected error messages.
+
+# This should generate a "Stack empty!" message.
+pop
+
+# Test other error situations here.
+....
+
+0.0
+exit

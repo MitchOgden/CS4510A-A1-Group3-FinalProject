@@ -1,0 +1,10 @@
+# Test misc. math functions swap, pop, abs, sign, recip, chs, min, max
+# floor, ceil, round, trunc, fact
+
+# Tests go here.
+
+# Should be zero or very small here so add to previous % error
++
+
+# Integration test that runs this script will confirm that
+# the final result is zero or very small.

@@ -87,7 +87,7 @@ public class RPNCalculator {
      * Adds the top two elements on the stack and pushes the result back onto the stack.
      */
     public void add() {
-        value(stack.pop().add(stack.pop(), mathContext));
+        value(BigDecimalUtils.add(stack.pop(), stack.pop(), mathContext));
     }
 
     /**
@@ -96,14 +96,14 @@ public class RPNCalculator {
     public void sub() {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
-        value(y.subtract(x, mathContext));
+        value(BigDecimalUtils.subtract(x, y, mathContext));
     }
 
     /**
      * Multiplies the top two elements on the stack and pushes the result back onto the stack.
      */
     public void mult() {
-        value(stack.pop().multiply(stack.pop(), mathContext));
+        value(BigDecimalUtils.multiply(stack.pop(), stack.pop(), mathContext));
     }
 
     /**
@@ -112,7 +112,7 @@ public class RPNCalculator {
     public void div() {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
-        value(y.divide(x, mathContext));
+        value(BigDecimalUtils.divide(x, y, mathContext));
     }
 
     /**
@@ -121,7 +121,7 @@ public class RPNCalculator {
     public void min() {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
-        value(x.min(y));
+        value(BigDecimalUtils.min(x, y));
     }
 
     /**
@@ -130,7 +130,7 @@ public class RPNCalculator {
     public void max() {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
-        value(x.max(y));
+        value(BigDecimalUtils.max(x,y));
     }
 
     /**
@@ -174,7 +174,7 @@ public class RPNCalculator {
     public void ipow() {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
-        value(BigDecimalUtils.pow(y, x.doubleValue(), mathContext));
+        value(BigDecimalUtils.pow(y, x, mathContext));
     }
 
     /**
@@ -183,7 +183,7 @@ public class RPNCalculator {
     public void pow() {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
-        value(BigDecimalUtils.pow(y, x.doubleValue(), mathContext));
+        value(BigDecimalUtils.pow(y, x, mathContext));
     }
     
     
@@ -202,14 +202,14 @@ public class RPNCalculator {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
         // WARNING: This approach might lose precision
-        value(BigDecimalUtils.pow(y, 1.0 / x.doubleValue(), mathContext));
+        value(BigDecimalUtils.pow(y, BigDecimal.ONE.divide(x, mathContext), mathContext));
     }
 
     /**
      * Calculates the exponential function of the top element on the stack and pushes the result back onto the stack.
      */
     public void exp() {
-        value(BigDecimalUtils.pow(BigDecimal.valueOf(Math.E), stack.pop().doubleValue(), mathContext));
+        value(BigDecimalUtils.pow(BigDecimalUtil.valueOf(Math.E), stack.pop(), mathContext));
     }
 
     /**

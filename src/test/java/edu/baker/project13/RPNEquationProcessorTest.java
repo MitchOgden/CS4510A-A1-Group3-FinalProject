@@ -18,7 +18,7 @@ import java.math.MathContext;
 
 public class RPNEquationProcessorTest {
 
-    private static final MathContext mc = new MathContext(10); // or whatever precision you need
+    private static final MathContext mc = new MathContext(10); 
     private static final BigDecimal delta = BigDecimal.ONE.scaleByPowerOfTen(-mc.getPrecision() + 4);
     
     @Test

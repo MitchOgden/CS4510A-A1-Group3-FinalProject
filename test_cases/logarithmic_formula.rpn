@@ -1,10 +1,87 @@
 # Various power and logarithmic formula tests using ipow, pow, root, 
 # exp, log, exp10 and log10
 
-# Tests go here.
+# Calculate 2^3 using ipow
+2
+3
+ipow
 
-# Should be zero or very small here so add to previous % error
+# This is the expected result
+8.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Calculate the square root of 16
+16
+root
+
+# This is the expected result
+4.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Calculate the natural logarithm of 10
+10
+log
+
+# This is the expected result
+2.302585092994046
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Calculate the base 10 logarithm of 100
+100
+log10
+
+# This is the expected result
+2.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Calculate the exponential of 1.5
+1.5
+exp
+
+# This is the expected result
+4.4816890703380645
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Calculate 10 raised to the power of 2.5
+2.5
+exp10
+
+# This is the expected result
+316.22776601683796
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Should be zero or very small here so add to the previous % error
 +
+# Integration test that runs this script will confirm that the final result is zero or very small.
 
-# Integration test that runs this script will confirm that
 # the final result is zero or very small.

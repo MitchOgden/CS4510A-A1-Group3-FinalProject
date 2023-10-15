@@ -1,4 +1,4 @@
-package edu.baker.project13;
+package edu.baker.finalproject;
 
 /**
  * This class contains integration tests for the RPNCalculator and RPNEquationProcessor classes.
@@ -6,6 +6,7 @@ package edu.baker.project13;
  * is a very small number. It also tests for error situations.
  */
 
+import edu.baker.finalproject.RPNEquationProcessor;
 import static org.junit.jupiter.api.Assertions.*;
 import java.nio.file.*;
 import java.io.*;

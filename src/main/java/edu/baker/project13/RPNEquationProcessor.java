@@ -28,13 +28,15 @@ public class RPNEquationProcessor {
     private final Map<String, BigDecimal> variables = new HashMap<>();
     
     // MathContext for precision settings
-    private final MathContext mc = new MathContext(8);  
+    private final MathContext mc;  
     
     /**
      * Constructor that initializes the RPNCalculator and input reader.
      * @param reader The reader for input.
+     * @param mc MathContext
      */
-    public RPNEquationProcessor(Reader reader) {
+    public RPNEquationProcessor(Reader reader, MathContext mc) {
+        this.mc = mc;
         this.calc = new RPNCalculator(mc);
         this.input = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);
     }

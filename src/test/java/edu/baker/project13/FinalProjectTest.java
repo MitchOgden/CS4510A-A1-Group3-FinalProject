@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author mitch
  */
-public class Project13Test {
+public class FinalProjectTest {
     
-    public Project13Test() {
+    public FinalProjectTest() {
     }
     
     @BeforeAll

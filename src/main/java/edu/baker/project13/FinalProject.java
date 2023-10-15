@@ -13,13 +13,17 @@ import java.nio.file.Path;
 /**
  * RPN Calculator Project
  */
-public class Project13 {
+public class FinalProject {
 
     /**
      * Entry point for the application.
      * @param args Command-line arguments. Pass a file path to read from a file.
      */
     public static void main(String[] args) {
+        
+        // Add MathContext variable
+        MathContext mc = new MathContext(8);  // You can set the precision as required
+
         // Display a welcome message
         System.out.println("RPN Calculator!");
         
@@ -36,9 +40,11 @@ public class Project13 {
                 System.out.println("Type 'Exit' then <ENTER> to quit.");
                 reader = new InputStreamReader(System.in);
             }
-            // Create an RPNEquationProcessor and process the input
-            RPNEquationProcessor eqProcessor = new RPNEquationProcessor(reader);
+
+            // Pass MathContext into RPNEquationProcessor constructor
+            RPNEquationProcessor eqProcessor = new RPNEquationProcessor(reader, mc);
             BigDecimal result = eqProcessor.processInput(new OutputStreamWriter(System.out));
+            
             
             // Display the final result
             System.out.println("Result: " + result.toPlainString());

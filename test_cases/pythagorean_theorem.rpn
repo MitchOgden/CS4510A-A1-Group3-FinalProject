@@ -7,11 +7,11 @@ a
 pow
 b
 b
-mult
-add
+*
++
 c
 x
-mult
+*
 
 # Now compute the % error = abs(actual/expected - 1)
 div

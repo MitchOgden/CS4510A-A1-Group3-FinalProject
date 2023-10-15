@@ -25,7 +25,6 @@ n
 23.382685902179843
 
 # Now compute the % error = abs(actual/expected - 1)
-23.382685902179843
 /
 1
 -
@@ -56,7 +55,6 @@ cos
 3.141592653569122
 
 # Now compute the % error = abs(actual/expected - 1)
-3.141592653569122
 /
 1
 -

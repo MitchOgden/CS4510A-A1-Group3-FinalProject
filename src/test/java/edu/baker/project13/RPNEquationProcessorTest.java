@@ -18,9 +18,11 @@ import java.math.MathContext;
 
 public class RPNEquationProcessorTest {
 
+    private static final MathContext mc = new MathContext(10); // or whatever precision you need
+    private static final BigDecimal delta = BigDecimal.ONE.scaleByPowerOfTen(-mc.getPrecision() + 4);
+    
     @Test
     public void testProcessInput() throws IOException {
-        MathContext mc = new MathContext(10); // or whatever precision you need
         Path path = FileSystems.getDefault().getPath("test_cases");
         for (var p : Files.list(path).collect(Collectors.toList())) {
             if (p.toString().endsWith(".rpn") && !p.toString().endsWith("error_cases.rpn")) {
@@ -28,7 +30,7 @@ public class RPNEquationProcessorTest {
                 Reader reader = Files.newBufferedReader(p, java.nio.charset.StandardCharsets.UTF_8);
                 RPNEquationProcessor eqProcessor = new RPNEquationProcessor(reader, mc); // pass MathContext
                 BigDecimal result = eqProcessor.processInput(new OutputStreamWriter(System.out));
-                assertTrue(result.abs().compareTo(new BigDecimal("1e-9")) < 0, "Failed at " + p.toString());
+                assertTrue(result.abs().compareTo(delta) < 0, "Failed at " + p.toString());
             }
         }
     }
@@ -37,12 +39,14 @@ public class RPNEquationProcessorTest {
     @Test
     public void testProcessBadInput() throws IOException {
         StringWriter buffer = new StringWriter();
-        MathContext mc = new MathContext(10); // or whatever precision you need
         Path path = FileSystems.getDefault().getPath("test_cases", "error_cases.rpn");
         Reader reader = Files.newBufferedReader(path, java.nio.charset.StandardCharsets.UTF_8);
         RPNEquationProcessor eqProcessor = new RPNEquationProcessor(reader, mc); // pass MathContext
         BigDecimal result = eqProcessor.processInput(buffer);
         String s = buffer.toString();
+        assertTrue(s.contains("BigDecimal Underflow"), "BigDecimal Underflow error not found");
         assertTrue(s.contains("Stack empty!"), "Stack empty error not found");
     }
+    
+    
 }

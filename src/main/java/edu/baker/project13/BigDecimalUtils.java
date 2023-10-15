@@ -96,7 +96,7 @@ public class BigDecimalUtils {
      * @param mc MathContext for precision.
      * @return base raised to the power of exponent.
      */
-    public static BigDecimal pow(BigDecimal base, double exponent, MathContext mc) {
+    public static BigDecimal pow(BigDecimal base, BigDecimal exponent, MathContext mc) {
         // return new BigDecimal(Math.pow(base.doubleValue(), exponent), mc);
         return BigDecimal.ZERO;
     }

@@ -202,14 +202,14 @@ public class RPNCalculator {
         BigDecimal x = stack.pop();
         BigDecimal y = stack.pop();
         // WARNING: This approach might lose precision
-        value(BigDecimalUtils.pow(y, BigDecimal.ONE.divide(x, mathContext), mathContext));
+        value(BigDecimalUtils.iroot(y, x, mathContext));
     }
 
     /**
      * Calculates the exponential function of the top element on the stack and pushes the result back onto the stack.
      */
     public void exp() {
-        value(BigDecimalUtils.pow(BigDecimalUtil.valueOf(Math.E), stack.pop(), mathContext));
+        value(BigDecimalUtils.exp10(stack.pop(), mathContext));
     }
 
     /**
@@ -272,14 +272,14 @@ public class RPNCalculator {
      * Pushes the constant e onto the stack.
      */
     public void e() {
-        value(BigDecimal.valueOf(Math.E));
+        value(BigDecimalUtils.e(mathContext));
     }
 
     /**
      * Pushes the constant π (Pi) onto the stack.
      */
     public void π() {
-        value(BigDecimal.valueOf(Math.PI));
+        value(BigDecimalUtils.pi(mathContext));
     }
 
     /**

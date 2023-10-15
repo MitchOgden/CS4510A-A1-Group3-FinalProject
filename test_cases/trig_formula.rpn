@@ -1,7 +1,84 @@
 # Various trigonometric formula tests using cos, sin, tan, acos, asin, atan
 # https://trigidentities.net/
 
-# Tests go here.
+# Test cos
+0
+cos
+
+# This is the expected result
+1.0
+
+# Now compute the % error
+/
+1
+-
+abs
+
+# Test sin
+30
+sin
+
+# This is the expected result
+0.5
+
+# Now compute the % error
+/
+1
+-
+abs
+
+# Test tan
+45
+tan
+
+# This is the expected result
+1.0
+
+# Now compute the % error
+/
+1
+-
+abs
+
+# Test acos
+0.5
+acos
+
+# This is the expected result
+60.0
+
+# Now compute the % error
+/
+1
+-
+abs
+
+# Test asin
+0.5
+asin
+
+# This is the expected result (in radians)
+0.52359877559
+
+# Now compute the % error
+/
+1
+-
+abs
+
+# Test atan
+1.0
+atan
+
+# This is the expected result (in radians)
+0.7853981634
+
+# Now compute the % error
+/
+1
+-
+abs
+
 
 # Should be zero or very small here so add to previous % error
 +

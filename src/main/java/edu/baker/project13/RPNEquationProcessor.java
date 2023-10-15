@@ -199,6 +199,7 @@ public class RPNEquationProcessor {
         }
         
         // Return the current top value of the calculator stack
-        return calc.peek().toString();
+        return calc.peek().toEngineeringString();
+
     }
 }

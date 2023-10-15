@@ -5,8 +5,8 @@ r=20
 2
 π
 r
-mult
-mult
+*
+*
 
 # This is the expected result
 125.66370614359173
@@ -21,7 +21,7 @@ abs
 # Circle area = πr^2
 r=10
 
-# Do your calculation with n and r here...
+# Calculate the area using the formula
 pi
 r
 r
@@ -41,3 +41,4 @@ abs
 
 # Integration test that runs this script will confirm that
 # the final result is zero or very small.
+

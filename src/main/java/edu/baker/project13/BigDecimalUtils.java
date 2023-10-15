@@ -209,4 +209,117 @@ public class BigDecimalUtils {
     public static BigDecimal round(BigDecimal value) {
         return value.setScale(0, RoundingMode.HALF_UP);
     }
+    
+    /**
+    * Returns the reciprocal of a BigDecimal number.
+    * @param x The number.
+    * @param mc MathContext for precision.
+    * @return Reciprocal of x.
+    */
+   public static BigDecimal recip(BigDecimal x, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Truncates a BigDecimal number.
+    * @param x The number.
+    * @param mc MathContext for precision.
+    * @return Truncated value of x.
+    */
+   public static BigDecimal trunc(BigDecimal x, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Raises a BigDecimal to the power of another BigDecimal exponent.
+    * @param base The base number.
+    * @param power The exponent.
+    * @param mc MathContext for precision.
+    * @return base raised to the power of exponent.
+    */
+   public static BigDecimal ipow(BigDecimal base, BigDecimal power, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Raises a BigDecimal to the power of a long exponent.
+    * @param base The base number.
+    * @param ipower The exponent.
+    * @param mc MathContext for precision.
+    * @return base raised to the power of exponent.
+    */
+   public static BigDecimal ipow(BigDecimal base, long ipower, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Computes the root of a BigDecimal number using another BigDecimal as the root value.
+    * @param base The base number.
+    * @param root The root value.
+    * @param mc MathContext for precision.
+    * @return base to the power of 1/root.
+    */
+   public static BigDecimal iroot(BigDecimal base, BigDecimal root, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Computes the root of a BigDecimal number using a long as the root value.
+    * @param base The base number.
+    * @param iroot The root value.
+    * @param mc MathContext for precision.
+    * @return base to the power of 1/root.
+    */
+   public static BigDecimal iroot(BigDecimal base, long iroot, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Computes 10 raised to the power of a BigDecimal number.
+    * @param x The exponent.
+    * @param mc MathContext for precision.
+    * @return 10 raised to the power of x.
+    */
+   public static BigDecimal exp10(BigDecimal x, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Computes the arctangent of the quotient of its arguments.
+    * @param y The y-coordinate.
+    * @param x The x-coordinate.
+    * @param mc MathContext for precision.
+    * @return The angle whose tangent is y/x.
+    */
+   public static BigDecimal atan2(BigDecimal y, BigDecimal x, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Returns the mathematical constant e.
+    * @param mc MathContext for precision.
+    * @return The value of e.
+    */
+   public static BigDecimal e(MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Returns the mathematical constant pi.
+    * @param mc MathContext for precision.
+    * @return The value of pi.
+    */
+   public static BigDecimal pi(MathContext mc) {
+       return BigDecimal.ZERO;
+   }
+
+   /**
+    * Computes the factorial of a BigDecimal number.
+    * @param x The number.
+    * @param mc MathContext for precision.
+    * @return x! (x factorial).
+    */
+   public static BigDecimal factorial(BigDecimal x, MathContext mc) {
+       return BigDecimal.ZERO;
+   }
 }

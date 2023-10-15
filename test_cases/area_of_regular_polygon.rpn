@@ -3,14 +3,30 @@
 n = 6
 r = 3
 
-# Do your calculation with n and r here...
-....
+# Calculate intermediate values
+pi
+n
+/
+r
+r
+*
+sin
+n
+/
+*
+cos
+n
+/
+*
+n
+*
 
 # This is the expected result
 23.382685902179843
 
 # Now compute the % error = abs(actual/expected - 1)
-div
+23.382685902179843
+/
 1
 -
 abs
@@ -20,16 +36,28 @@ abs
 # Approx pi with large number of sides
 n = 1000000
 r = 1
-n
 
-# Do your calculation again with n and r here...
-....
+# Calculate the area again using the formula
+π
+n
+/
+sin
+*
+r
+*
+r
+*
+cos
+*
+*
+*
 
 # This is the expected result
 3.141592653569122
 
 # Now compute the % error = abs(actual/expected - 1)
-div
+3.141592653569122
+/
 1
 -
 abs
@@ -38,3 +66,4 @@ abs
 
 # Integration test that runs this script will confirm that
 # the final result is zero or very small.
+

@@ -17,7 +17,8 @@ public class BigDecimalUtils {
      * @return Sum of a and b.
      */
     public static BigDecimal add(BigDecimal a, BigDecimal b, MathContext mc) {
-        return a.add(b, mc);
+        // return a.add(b, mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -28,7 +29,8 @@ public class BigDecimalUtils {
      * @return a - b.
      */
     public static BigDecimal subtract(BigDecimal a, BigDecimal b, MathContext mc) {
-        return a.subtract(b, mc);
+        // return a.subtract(b, mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -39,7 +41,8 @@ public class BigDecimalUtils {
      * @return a * b.
      */
     public static BigDecimal multiply(BigDecimal a, BigDecimal b, MathContext mc) {
-        return a.multiply(b, mc);
+        // return a.multiply(b, mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -50,7 +53,8 @@ public class BigDecimalUtils {
      * @return a / b.
      */
     public static BigDecimal divide(BigDecimal a, BigDecimal b, MathContext mc) {
-        return a.divide(b, mc);
+        // return a.divide(b, mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -60,7 +64,8 @@ public class BigDecimalUtils {
      * @return Minimum of a and b.
      */
     public static BigDecimal min(BigDecimal a, BigDecimal b) {
-        return a.min(b);
+        // return a.min(b);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -70,7 +75,8 @@ public class BigDecimalUtils {
      * @return Maximum of a and b.
      */
     public static BigDecimal max(BigDecimal a, BigDecimal b) {
-        return a.max(b);
+        // return a.max(b);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -79,7 +85,8 @@ public class BigDecimalUtils {
      * @return Absolute value of a.
      */
     public static BigDecimal abs(BigDecimal a) {
-        return a.abs();
+        // return a.abs();
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -90,7 +97,8 @@ public class BigDecimalUtils {
      * @return base raised to the power of exponent.
      */
     public static BigDecimal pow(BigDecimal base, double exponent, MathContext mc) {
-        return new BigDecimal(Math.pow(base.doubleValue(), exponent), mc);
+        // return new BigDecimal(Math.pow(base.doubleValue(), exponent), mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -100,7 +108,8 @@ public class BigDecimalUtils {
      * @return Square root of value.
      */
     public static BigDecimal sqrt(BigDecimal value, MathContext mc) {
-        return value.sqrt(mc);
+        // return value.sqrt(mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -110,7 +119,8 @@ public class BigDecimalUtils {
      * @return Sine of value.
      */
     public static BigDecimal sin(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.sin(value.doubleValue()), mc);
+        // return new BigDecimal(Math.sin(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -120,7 +130,8 @@ public class BigDecimalUtils {
      * @return Cosine of value.
      */
     public static BigDecimal cos(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.cos(value.doubleValue()), mc);
+        // return new BigDecimal(Math.cos(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -130,7 +141,8 @@ public class BigDecimalUtils {
      * @return Tangent of value.
      */
     public static BigDecimal tan(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.tan(value.doubleValue()), mc);
+        // return new BigDecimal(Math.tan(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -140,7 +152,8 @@ public class BigDecimalUtils {
      * @return Arcsine of value.
      */
     public static BigDecimal asin(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.asin(value.doubleValue()), mc);
+        // return new BigDecimal(Math.asin(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -150,7 +163,8 @@ public class BigDecimalUtils {
      * @return Arccosine of value.
      */
     public static BigDecimal acos(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.acos(value.doubleValue()), mc);
+        // return new BigDecimal(Math.acos(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -160,7 +174,9 @@ public class BigDecimalUtils {
      * @return Arctangent of value.
      */
     public static BigDecimal atan(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.atan(value.doubleValue()), mc);
+        // return new BigDecimal(Math.atan(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
+
     }
 
     /**
@@ -170,7 +186,9 @@ public class BigDecimalUtils {
      * @return Natural logarithm of value.
      */
     public static BigDecimal log(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.log(value.doubleValue()), mc);
+        // return new BigDecimal(Math.log(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
+
     }
 
     /**
@@ -180,7 +198,9 @@ public class BigDecimalUtils {
      * @return Base-10 logarithm of value.
      */
     public static BigDecimal log10(BigDecimal value, MathContext mc) {
-        return new BigDecimal(Math.log10(value.doubleValue()), mc);
+        // return new BigDecimal(Math.log10(value.doubleValue()), mc);
+        return BigDecimal.ZERO;
+
     }
 
     /**
@@ -189,7 +209,9 @@ public class BigDecimalUtils {
      * @return Rounded down value.
      */
     public static BigDecimal floor(BigDecimal value) {
-        return value.setScale(0, RoundingMode.FLOOR);
+        // return value.setScale(0, RoundingMode.FLOOR);
+        return BigDecimal.ZERO;
+
     }
 
     /**
@@ -198,7 +220,8 @@ public class BigDecimalUtils {
      * @return Rounded up value.
      */
     public static BigDecimal ceil(BigDecimal value) {
-        return value.setScale(0, RoundingMode.CEILING);
+        // return value.setScale(0, RoundingMode.CEILING);
+        return BigDecimal.ZERO;
     }
 
     /**
@@ -207,7 +230,8 @@ public class BigDecimalUtils {
      * @return Rounded value.
      */
     public static BigDecimal round(BigDecimal value) {
-        return value.setScale(0, RoundingMode.HALF_UP);
+        // return value.setScale(0, RoundingMode.HALF_UP);
+        return BigDecimal.ZERO;
     }
     
     /**

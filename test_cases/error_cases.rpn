@@ -1,13 +1,50 @@
 # Error cases tested here.
 
-# Integration test that runs this script will have to search
-# the output to find the expected error messages.
+# Test for NumberFormatException
+abc=invalid_value
 
 # This should generate a "Stack empty!" message.
 pop
 
-# Test other error situations here.
-....
+# Test for catching a generic exception
+undefined_var =
+
+# Divide by zero
+1
+0
+/
+1
+-
+abs
+
+# Test for IllegalArgumentException
+0.0
+0.0
+ipow
+
+# Test for a predefined variable assignment
+e = 2.71828
+
+
+# Undefined variable
+undefined_var = 42
+undefined_var
+
+# Attempt to apply functions to the wrong number of operands
+3
++
+abs
+
+# Nonexistent command
+nonexistent_command
+
+# Try to perform operations on an empty stack
+*
+/
++
+-
+abs
 
 0.0
 exit
+

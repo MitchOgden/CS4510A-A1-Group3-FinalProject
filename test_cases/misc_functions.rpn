@@ -1,10 +1,267 @@
 # Test misc. math functions swap, pop, abs, sign, recip, chs, min, max
 # floor, ceil, round, trunc, fact
 
-# Tests go here.
+# Push two values onto the stack
+2.5
+-3.0
 
-# Should be zero or very small here so add to previous % error
+# Duplicate the top value
+dup
+
+# Perform the swap operation
+swap
+
+# Now you should have the original order
+# and the duplicate should be the same as the original
+
+# Compare the top two values
+eq
+
+# This is the expected result 
+1.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test pop (pop the top value)
+pop
+
+# This is the expected result
+-3.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test abs (take the absolute value)
+abs
+
+# This is the expected result (abs of -3.0)
+3.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test sign (get the sign of the top value)
+sign
+
+# This is the expected result 
+-1.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test recip (reciprocal, 1/x)
+recip
+
+# This is the expected result 
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test min (minimum of two values)
+2.5
+-3.0
+min
+
+# This is the expected result 
+-3.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test max (maximum of two values)
+2.5
+-3.0
+max
+
+# This is the expected result 
+2.5
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test floor (floor the top value)
+2.5
+floor
+
+# This is the expected result 
+2.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test ceil (ceiling the top value)
+2.5
+ceil
+
+# This is the expected result 
+3.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test round (round the top value)
+2.5
+round
+
+# This is the expected result 
+2.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test trunc (truncate the top value)
+2.5
+trunc
+
+# This is the expected result 
+2.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test fact (factorial the top value)
+5.0
+fact
+
+# This is the expected result 
+120.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test the clear method
+# Push some values onto the stack
+2.5
+-3.0
+5.0
+1.0
+
+# Clear the stack
+clear
+
+# Check if the stack is empty
+empty
+
+# This is the expected result after clearing the stack
+1.0
+
+# Now compute the % error = abs(actual/expected - 1)
+div
+1
+sub
+abs
+
+# Test the neg() method
+
+# Push a value onto the stack
+2.5
+
+# Call the neg() method
+neg
+
+# This is the expected result 
+-2.5
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test the atan2() method
+
+# Push two values onto the stack (y and x)
+2.0
+1.0
+atan2
+
+# This is the expected result 
+1.1071487177940904
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test the e() method
+e
+
+# This is the expected result 
+2.718281828459045
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+# Test storing the value of 'y' into a variable
+0
+y
+
+# This is the expected result (the value of 'y')
+0
+
+# Check if the value was stored correctly in the variable
+# This should print the value of 'y'
+print
+
+# Test the round() method with a negative value
+-2.5
+round
+
+# This is the expected result 
+-3.0
+
+# Now compute the % error = abs(actual/expected - 1)
+/
+1
+-
+abs
+
+
+# Should be zero or very small here so add to the previous % error
 +
 
 # Integration test that runs this script will confirm that
 # the final result is zero or very small.
+
+

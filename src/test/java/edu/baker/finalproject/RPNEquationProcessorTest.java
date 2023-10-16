@@ -20,7 +20,7 @@ import java.math.MathContext;
 public class RPNEquationProcessorTest {
 
     private static final MathContext mc = new MathContext(10); 
-    private static final BigDecimal delta = BigDecimal.ONE.scaleByPowerOfTen(-mc.getPrecision() + 4);
+    private static final BigDecimal DELTA = BigDecimal.ONE.scaleByPowerOfTen(-mc.getPrecision() + 4);
     
     @Test
     public void testProcessInput() throws IOException {
@@ -31,7 +31,7 @@ public class RPNEquationProcessorTest {
                 Reader reader = Files.newBufferedReader(p, java.nio.charset.StandardCharsets.UTF_8);
                 RPNEquationProcessor eqProcessor = new RPNEquationProcessor(reader, mc); // pass MathContext
                 BigDecimal result = eqProcessor.processInput(new OutputStreamWriter(System.out));
-                assertTrue(result.abs().compareTo(delta) < 0, "Failed at " + p.toString());
+                assertTrue(result.abs().compareTo(DELTA) < 0, "Failed at " + p.toString());
             }
         }
     }
@@ -43,10 +43,15 @@ public class RPNEquationProcessorTest {
         Path path = FileSystems.getDefault().getPath("test_cases", "error_cases.rpn");
         Reader reader = Files.newBufferedReader(path, java.nio.charset.StandardCharsets.UTF_8);
         RPNEquationProcessor eqProcessor = new RPNEquationProcessor(reader, mc); // pass MathContext
-        BigDecimal result = eqProcessor.processInput(buffer);
+        eqProcessor.processInput(buffer);
         String s = buffer.toString();
-        assertTrue(s.contains("BigDecimal Underflow"), "BigDecimal Underflow error not found");
-        assertTrue(s.contains("Stack empty!"), "Stack empty error not found");
+        
+        assertTrue(s.contains("NumberFormatException"), "NumberFormatException error found");
+        assertTrue(s.contains("Stack empty!"), "Stack empty error found");
+        assertTrue(s.contains("IllegalArgumentException") || s.contains("Generic exception"), "IllegalArgumentException error found");
+        assertTrue(s.contains("Illegal assignment"), "Illegal Assignment error found");
+        assertTrue(s.contains("BigDecimal Underflow"), "BigDecimal Underflow error found");
+        assertTrue(s.contains("ArithmeticException"), "ArithmeticException error found");
     }
     
     

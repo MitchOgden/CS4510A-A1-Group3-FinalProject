@@ -1,7 +1,9 @@
 # Error cases tested here.
+# Integration test that runs this script will have to search
+# the output to find the expected error messages.
 
 # Test for NumberFormatException
-abc=invalid_value
+invalid_value = abc
 
 # This should generate a "Stack empty!" message.
 pop
@@ -9,13 +11,12 @@ pop
 # Test for catching a generic exception
 undefined_var =
 
-# Divide by zero
+
+# Test for ArithmeticException (Division by Zero)
 1
 0
 /
-1
--
-abs
+
 
 # Test for IllegalArgumentException
 0.0
@@ -45,6 +46,10 @@ nonexistent_command
 -
 abs
 
-0.0
-exit
+# Test for BigDecimal underflow
+1E-5000
+-
+
+
+
 

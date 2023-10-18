@@ -128,15 +128,21 @@ public class BigDecimalUtils {
 
     /**
      * Computes the cosine of a BigDecimal angle in radians.
-     * @param value The angle in radians.
+     * @param x
      * @param mc MathContext for precision.
      * @return Cosine of value.
      */
-    public static BigDecimal cos(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.cos(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
+    public static BigDecimal cos(BigDecimal x, MathContext mc) {
+        //Convert BigDecimal argument to double 
+        double convertToDouble = x.doubleValue();
+        
+        //Math.cos to calculate cosine
+        double result = Math.cos(convertToDouble);
+        
+        //Convert back to BigDecimal
+        return new BigDecimal(result, mc);
     }
-
+    
     /**
      * Computes the tangent of a BigDecimal angle in radians.
      * @param x

@@ -196,6 +196,19 @@ public class BigDecimalUtilsTest {
 
     @Test
     public void testAcos() {
+        MathContext mc = new MathContext(5);
+        // pos input
+        BigDecimal result1 = BigDecimalUtils.acos(new BigDecimal("0.5"), mc);
+        assertEquals(new BigDecimal("1.0472"), result1); // Approximately pi/3
+
+        // neg test
+        BigDecimal result2 = BigDecimalUtils.acos(new BigDecimal("-0.8"), mc);
+        assertEquals(new BigDecimal("2.4981"), result2); 
+        
+        //zero input
+        BigDecimal result3 = BigDecimalUtils.acos(new BigDecimal("0"), mc); 
+        assertEquals(new BigDecimal("1.5708"),result3); 
+        
     }
 
     @Test
@@ -434,6 +447,32 @@ public void testLog10() {
             exceptionThrown = true;
         }
         assertTrue(exceptionThrown);
+    }
+
+    @Test
+    public void testExp10(){
+        MathContext mc = new MathContext(5);
+          
+        // Test case 1: 10^2
+        BigDecimal result1 = BigDecimalUtils.exp10(new BigDecimal("2"), mc);
+        assertEquals(new BigDecimal("100"), result1);
+
+        // Test case 2: 10^(-1)
+        BigDecimal result2 = BigDecimalUtils.exp10(new BigDecimal("-1"), mc);
+        assertEquals(new BigDecimal("0.10000"), result2);
+    }
+
+    @Test
+    public void testRecip(){
+        MathContext mc = new MathContext(5);
+
+        // Test case 1: reciprocal of 2
+        BigDecimal result1 = BigDecimalUtils.recip(new BigDecimal("2"), mc);
+        assertEquals(new BigDecimal("0.5"), result1);
+
+        // Test case 2: reciprocal of 5
+        BigDecimal result2 = BigDecimalUtils.recip(new BigDecimal("5"), mc);
+        assertEquals(new BigDecimal("0.20000"), result2);
     }
 }
     

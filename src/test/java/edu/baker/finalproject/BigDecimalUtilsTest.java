@@ -113,14 +113,14 @@ public class BigDecimalUtilsTest {
     @Test
     public void testFloorPositiveValue() {
         BigDecimal input = new BigDecimal("10.75");
-        BigDecimal result = BigDecimalUtil.floor(input);
+        BigDecimal result = BigDecimalUtils.floor(input);
         assertEquals(0, result.compareTo(new BigDecimal("10")));
     }
 
     @Test
     public void testFloorNegativeValue() {
         BigDecimal input = new BigDecimal("-10.75");
-        BigDecimal result = BigDecimalUtil.floor(input);
+        BigDecimal result = BigDecimalUtils.floor(input);
         assertEquals(0, result.compareTo(new BigDecimal("-11")));
     }
 

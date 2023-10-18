@@ -344,7 +344,8 @@ public class BigDecimalUtils {
     * @return The value of e.
     */
    public static BigDecimal e(MathContext mc) {
-        return new BigDecimal(Math.exp(1), mc);
+        double e = Math.exp(1.0); // Using Math.exp to get the value of e
+        return new BigDecimal(e, mc); // Converting back to BigDecimal
    }
 
    /**

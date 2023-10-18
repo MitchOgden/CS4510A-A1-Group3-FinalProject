@@ -326,7 +326,7 @@ public class BigDecimalUtils {
     * @return The value of e.
     */
    public static BigDecimal e(MathContext mc) {
-       return BigDecimal.ZERO;
+        return new BigDecimal(Math.exp(1), mc);
    }
 
    /**

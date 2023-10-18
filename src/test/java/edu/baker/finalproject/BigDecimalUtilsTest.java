@@ -154,6 +154,14 @@ public class BigDecimalUtilsTest {
     }
 
     @Test
+    public void testE() {
+        MathContext mc = MathContext.DECIMAL32;
+
+        BigDecimal result = BigDecimalUtils.e(mc);
+        System.out.println(result.equals(new BigDecimal("2.718281828459045"))); // Output: true
+    }
+    
+    @Test
     public void testRound() {
     }
     

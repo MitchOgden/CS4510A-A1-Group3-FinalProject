@@ -285,7 +285,8 @@ public class BigDecimalUtils {
     * @return base to the power of 1/root.
     */
    public static BigDecimal iroot(BigDecimal base, BigDecimal root, MathContext mc) {
-       return BigDecimal.ZERO;
+       long longRoot = root.longValueExact(); // Will throw ArithmeticException if root is not an integer
+       return iroot(base, longRoot, mc);
    }
 
    /**
@@ -296,7 +297,24 @@ public class BigDecimalUtils {
     * @return base to the power of 1/root.
     */
    public static BigDecimal iroot(BigDecimal base, long iroot, MathContext mc) {
-       return BigDecimal.ZERO;
+       if (iroot == 0) {
+            throw new ArithmeticException("Zero root");
+        }
+
+        BigDecimal one = new BigDecimal(1, mc);
+        BigDecimal n = new BigDecimal(iroot);
+        BigDecimal n1 = new BigDecimal(iroot - 1);
+        BigDecimal guess = base.divide(n, mc);
+        BigDecimal previousGuess = BigDecimal.ZERO;
+        BigDecimal tolerance = new BigDecimal("1E-" + mc.getPrecision(), mc);
+
+        while (guess.subtract(previousGuess).abs().compareTo(tolerance) > 0) {
+            previousGuess = guess;
+            BigDecimal part1 = base.divide(guess.pow((int) (iroot - 1)), mc);
+            BigDecimal part2 = n1.multiply(guess, mc);
+            guess = part1.add(part2).divide(n, mc);
+        }
+        return guess;
    }
 
    /**

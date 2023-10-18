@@ -110,8 +110,28 @@ public class BigDecimalUtilsTest {
     public void testCos() {
     }
 
+    /**
+     * Test of BigDecimal tan method, of class BigDecimalUtils
+     */
     @Test
-    public void testTan() {
+    public void testTan(){
+        //Test positive input
+        BigDecimal positiveInput = new BigDecimal(1);
+        BigDecimal positiveExpected = new BigDecimal(Math.tan(1), mc);
+        BigDecimal positiveResult = BigDecimalUtils.tan(positiveInput, mc);
+        assertEquals(positiveExpected, positiveResult);
+        
+        //Test negative input 
+        BigDecimal negativeInput = new BigDecimal(-1);
+        BigDecimal negativeExpected = new BigDecimal(Math.tan(-1), mc);
+        BigDecimal negativeResult = BigDecimalUtils.tan(negativeInput, mc);
+        assertEquals(negativeExpected, negativeResult);
+        
+        //Test input of zero
+        BigDecimal zeroInput = new BigDecimal(0);
+        BigDecimal zeroExpected = new BigDecimal(Math.tan(0), mc);
+        BigDecimal zeroResult = BigDecimalUtils.tan(zeroInput, mc);
+        assertEquals(zeroExpected, zeroResult);       
     }
 
     @Test
@@ -191,6 +211,70 @@ public class BigDecimalUtilsTest {
         BigDecimal x = new BigDecimal("3.14159", mc);
         BigDecimal expected = new BigDecimal(Math.round(x.doubleValue()), mc);
         BigDecimal result = BigDecimalUtils.round(x, mc);
+        assertEquals(expected, result);
+    }
+
+    /**
+     * Test of BigDecimal trunc method, of class BigDecimalUtils
+     */
+    @Test 
+    public void testTrunc(){
+        //Positive value test 
+        BigDecimal positiveInput = new BigDecimal("12.3456789");
+        BigDecimal positiveResult = BigDecimalUtils.trunc(positiveInput, mc);
+        BigDecimal positiveExpected = new BigDecimal("12");
+        assertEquals(positiveExpected, positiveResult);
+        
+        //Negative value test
+        BigDecimal negativeInput = new BigDecimal("-12.3456789");
+        BigDecimal negativeResult = BigDecimalUtils.trunc(negativeInput, mc);
+        BigDecimal negativeExpected = new BigDecimal("-12");
+        assertEquals(negativeExpected, negativeResult);
+        
+        //Trunc with zero
+        BigDecimal zeroInput = BigDecimal.ZERO;
+        BigDecimal zeroResult = BigDecimalUtils.trunc(zeroInput, mc);
+        BigDecimal zeroExpected = BigDecimal.ZERO;
+        assertEquals(zeroExpected,zeroResult);
+    }
+
+    /**
+     * Test of BigDecimal exp method, of class BigDecimalUtils
+     */
+    @Test
+    public void testExp(){
+        //Test e^2
+        BigDecimal positiveInput = new BigDecimal(2);
+        BigDecimal positiveExpected = new BigDecimal(Math.exp(2), mc);
+        BigDecimal positiveResult = BigDecimalUtils.exp(positiveInput, mc);
+        assertEquals(positiveExpected, positiveResult);
+        
+        //Test e^-2
+        BigDecimal negativeInput = new BigDecimal(-2);
+        BigDecimal negativeExpected = new BigDecimal(Math.exp(-2), mc);
+        BigDecimal negativeResult = BigDecimalUtils.exp(negativeInput, mc);
+        assertEquals(negativeExpected,negativeResult);
+        
+        //Test e^0
+        BigDecimal zeroInput = new BigDecimal(0);
+        BigDecimal zeroExpected = new BigDecimal(Math.exp(0), mc);
+        BigDecimal zeroResult = BigDecimalUtils.exp(zeroInput, mc);
+        assertEquals(zeroExpected,zeroResult);
+        
+        //Test e^100
+        BigDecimal largeInput = new BigDecimal(100);
+        BigDecimal largeExpected = new BigDecimal(Math.exp(100), mc);
+        BigDecimal largeResult = BigDecimalUtils.exp(largeInput, mc);
+        assertEquals(largeExpected,largeResult);
+    }
+
+    /**
+     * Test of BigDecimal pi method, of class BigDecimalUtils
+     */
+    @Test
+    public void testPi(){
+        BigDecimal expected = new BigDecimal(Math.PI, mc);
+        BigDecimal result = BigDecimalUtils.pi(mc);
         assertEquals(expected, result);
     }
     

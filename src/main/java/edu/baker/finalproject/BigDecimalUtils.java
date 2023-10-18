@@ -167,10 +167,15 @@ public class BigDecimalUtils {
      * @param mc MathContext for precision.
      * @return Arcsine of value.
      */
-    public static BigDecimal asin(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.asin(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
+public static BigDecimal asin(BigDecimal x, MathContext mc) {
+    // Ensure x is within the range [-1, 1] as the arcsine is only defined in that range.
+    if (x.compareTo(BigDecimal.ONE) > 0 || x.compareTo(BigDecimal.ONE.negate()) < 0) {
+        throw new ArithmeticException("Arcsine is undefined for values outside the range [-1, 1].");
     }
+
+    double result = Math.asin(x.doubleValue());
+    return new BigDecimal(result, mc);
+}
 
     /**
      * Computes the arccosine of a BigDecimal value.
@@ -201,11 +206,15 @@ public class BigDecimalUtils {
      * @param mc MathContext for precision.
      * @return Natural logarithm of value.
      */
-    public static BigDecimal log(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.log(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
-
+public static BigDecimal log(BigDecimal x, MathContext mc) {
+    // Ensure x is a positive number, as the logarithm is undefined for negative numbers and zero.
+    if (x.compareTo(BigDecimal.ZERO) <= 0) {
+        throw new ArithmeticException("Logarithm is undefined for non-positive values.");
     }
+    
+    double result = Math.log(x.doubleValue());
+    return new BigDecimal(result, mc);
+}
 
     /**
      * Computes the base-10 logarithm of a BigDecimal value.
@@ -213,11 +222,18 @@ public class BigDecimalUtils {
      * @param mc MathContext for precision.
      * @return Base-10 logarithm of value.
      */
-    public static BigDecimal log10(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.log10(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
-
+ public static BigDecimal log10(BigDecimal x, MathContext mc) {
+    // Ensure x is positive, as the logarithm is undefined for non-positive values.
+    if (x.compareTo(BigDecimal.ZERO) <= 0) {
+        throw new ArithmeticException("Logarithm base 10 is undefined for non-positive values.");
     }
+
+    BigDecimal logX = log(x, mc);  // Calculate the natural logarithm of x
+    BigDecimal log10 = new BigDecimal(Math.log(10.0), mc);  // Calculate the natural logarithm of 10
+
+    // Calculate log10(x) by dividing log(x) by log(10)
+    return logX.divide(log10, mc);
+}
 
     /**
      * Rounds down a BigDecimal value to the nearest integer.
@@ -234,12 +250,11 @@ public class BigDecimalUtils {
      * @param x
      * @return Rounded up value.
      */
-    public static BigDecimal ceil(BigDecimal x) {
-        // return value.setScale(0, RoundingMode.CEILING);
-        double doubleValue = x.doubleValue();
-        double ceilValue = Math.ceil(doubleValue);
-        return new BigDecimal(ceilValue);
-    }
+public static BigDecimal ceil(BigDecimal x, MathContext mc) {
+    // Calculate the ceiling value with the specified MathContext
+    BigDecimal scaledValue = x.setScale(mc.getPrecision() + 1, RoundingMode.CEILING);
+    return scaledValue.setScale(mc.getPrecision(), RoundingMode.DOWN);
+}
 
     /**
      * Rounds a BigDecimal value to the nearest integer.
@@ -287,9 +302,19 @@ public class BigDecimalUtils {
     * @param mc MathContext for precision.
     * @return base raised to the power of exponent.
     */
-   public static BigDecimal ipow(BigDecimal base, BigDecimal power, MathContext mc) {
-       return BigDecimal.ZERO;
-   }
+ public static BigDecimal ipow(BigDecimal base, BigDecimal power, MathContext mc) {
+    // Convert BigDecimal values to double
+    double baseDouble = base.doubleValue();
+    double powerDouble = power.doubleValue();
+
+    // Perform the power operation using double arithmetic
+    double resultDouble = Math.pow(baseDouble, powerDouble);
+
+    // Convert the result back to BigDecimal with the specified MathContext
+    BigDecimal resultBigDecimal = new BigDecimal(resultDouble, mc);
+
+    return resultBigDecimal;
+}
 
    /**
     * Raises a BigDecimal to the power of a long exponent.
@@ -400,9 +425,23 @@ public class BigDecimalUtils {
     * @param mc MathContext for precision.
     * @return x! (x factorial).
     */
-   public static BigDecimal factorial(BigDecimal x, MathContext mc) {
-       return BigDecimal.ZERO;
-   }
+  public static BigDecimal factorial(BigDecimal x, MathContext mc) {
+    // Convert the BigDecimal to a double
+    double doubleX = x.doubleValue();
+
+    if (doubleX < 0) {
+        throw new IllegalArgumentException("Factorial is not defined for negative numbers");
+    }
+
+    // Calculate the factorial using double arithmetic
+    double result = 1.0;
+    for (int i = 2; i <= doubleX; i++) {
+        result *= i;
+    }
+
+    // Convert the double result back to BigDecimal with the specified MathContext
+    return new BigDecimal(result, mc);
+}
 
     /**
     * Computes the exponential of a BigDecimal number.

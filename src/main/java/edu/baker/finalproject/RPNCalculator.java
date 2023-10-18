@@ -158,7 +158,7 @@ public class RPNCalculator {
      * Rounds the top element on the stack up to the nearest integer and pushes the result back onto the stack.
      */
     public void ceil() {
-        value(BigDecimalUtils.ceil(stack.pop()));
+        value(BigDecimalUtils.ceil(stack.pop(),mathContext ));
     }
 
     /**

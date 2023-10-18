@@ -76,6 +76,16 @@ public class BigDecimalUtilsTest {
         BigDecimal result = BigDecimalUtils.pow(base, power, mc);
         assertEquals(expected, result);
     }
+    
+        @Test
+    public void testIpow() {
+        MathContext mc = new MathContext(10); // Customize the MathContext as needed
+        BigDecimal base = new BigDecimal("2", mc);
+        BigDecimal power = new BigDecimal("3", mc);
+        BigDecimal expected = new BigDecimal(Math.pow(base.doubleValue(), power.doubleValue()), mc);
+        BigDecimal result = BigDecimalUtils.ipow(base, power, mc); // Replace YourClass with the actual class name
+        assertEquals(expected, result);
+    }
 
     @Test
     public void testSqrt() {
@@ -87,7 +97,11 @@ public class BigDecimalUtilsTest {
         BigDecimal base = new BigDecimal(27);
         BigDecimal root = new BigDecimal(3);
         BigDecimal result = BigDecimalUtils.iroot(base, root, mc);
-        assertEquals(new BigDecimal(3).setScale(mc.getPrecision(), mc.getRoundingMode()), result);
+        
+        // Update the expected value to match the precision and rounding mode
+        BigDecimal expected = new BigDecimal(3).setScale(mc.getPrecision(), mc.getRoundingMode());
+        
+        assertEquals(expected, result);
     }
 
     @Test
@@ -95,7 +109,11 @@ public class BigDecimalUtilsTest {
         BigDecimal base = new BigDecimal(16);
         BigDecimal root = new BigDecimal(2);
         BigDecimal result = BigDecimalUtils.iroot(base, root, mc);
-        assertEquals(new BigDecimal(4).setScale(mc.getPrecision(), mc.getRoundingMode()), result);
+        
+        // Update the expected value to match the precision and rounding mode
+        BigDecimal expected = new BigDecimal(4).setScale(mc.getPrecision(), mc.getRoundingMode());
+        
+        assertEquals(expected, result);
     }
     
     @Test
@@ -153,8 +171,27 @@ public class BigDecimalUtilsTest {
         assertEquals(zeroExpected, zeroResult);       
     }
 
-    @Test
+      @Test
     public void testAsin() {
+        MathContext mc = new MathContext(15);
+
+        // Test positive input
+        BigDecimal positiveInput = new BigDecimal("0.5");
+        BigDecimal positiveExpected = new BigDecimal(Math.asin(0.5), mc);
+        BigDecimal positiveResult = BigDecimalUtils.asin(positiveInput, mc);
+        assertEquals(positiveExpected, positiveResult, "Arcsine of 0.5 should match the expected result");
+
+        // Test negative input
+        BigDecimal negativeInput = new BigDecimal("-0.7");
+        BigDecimal negativeExpected = new BigDecimal(Math.asin(-0.7), mc);
+        BigDecimal negativeResult = BigDecimalUtils.asin(negativeInput, mc);
+        assertEquals(negativeExpected, negativeResult, "Arcsine of -0.7 should match the expected result");
+
+        // Test input of zero
+        BigDecimal zeroInput = new BigDecimal("0");
+        BigDecimal zeroExpected = new BigDecimal(Math.asin(0), mc);
+        BigDecimal zeroResult = BigDecimalUtils.asin(zeroInput, mc);
+        assertEquals(zeroExpected, zeroResult, "Arcsine of 0 should match the expected result");
     }
 
     @Test
@@ -164,14 +201,53 @@ public class BigDecimalUtilsTest {
     @Test
     public void testAtan() {
     }
-
+    
     @Test
     public void testLog() {
-    }
+        MathContext mc = new MathContext(15);
 
-    @Test
-    public void testLog10() {
+        // Test a valid logarithm calculation
+        BigDecimal input = new BigDecimal("10.0");
+        BigDecimal result = BigDecimalUtils.log(input, mc);
+        BigDecimal expected = new BigDecimal("2.30258509299405");
+        assertEquals(expected, result, "Logarithm of 10.0 should be approximately 2.302585092994046");
+
+        // Test the logarithm of 1.0 should be 0.0
+       BigDecimal input1 = new BigDecimal("1.0");
+        BigDecimal result1 = BigDecimalUtils.log(input1, mc);
+        BigDecimal expected1 = new BigDecimal("0");
+        assertEquals(expected1, result1, "Logarithm of 1.0 should be 0.0");
+
+        // Test an invalid input (non-positive value)
+       final BigDecimal input2 = new BigDecimal("0.0");
+        assertThrows(ArithmeticException.class, () -> BigDecimalUtils.log(input2, mc), "Logarithm of non-positive value should throw an exception");
+
+       final BigDecimal input3 = new BigDecimal("-5.0");
+        assertThrows(ArithmeticException.class, () -> BigDecimalUtils.log(input3, mc), "Logarithm of non-positive value should throw an exception");
     }
+@Test
+public void testLog10() {
+    MathContext mc = new MathContext(15);
+
+    // Test a positive input
+    BigDecimal positiveInput = new BigDecimal("100.0");
+    BigDecimal positiveExpected = new BigDecimal("2"); // Updated expected value
+    BigDecimal positiveResult = BigDecimalUtils.log10(positiveInput, mc);
+    assertEquals(0, positiveExpected.compareTo(positiveResult), "Log10 of 100.0 should match the expected result");
+
+    // Test a positive input that's not a power of 10
+    BigDecimal nonPowerOf10Input = new BigDecimal("30.0");
+    BigDecimal nonPowerOf10Expected = new BigDecimal("1.47712125471966", mc); // Updated expected value
+    BigDecimal nonPowerOf10Result = BigDecimalUtils.log10(nonPowerOf10Input, mc);
+    assertEquals(0, nonPowerOf10Expected.compareTo(nonPowerOf10Result), "Log10 of 30.0 should match the expected result");
+
+    // Test an invalid input (non-positive value)
+    BigDecimal zeroInput = new BigDecimal("0.0");
+    assertThrows(ArithmeticException.class, () -> BigDecimalUtils.log10(zeroInput, mc), "Log10 of non-positive value should throw an exception");
+
+    BigDecimal negativeInput = new BigDecimal("-5.0");
+    assertThrows(ArithmeticException.class, () -> BigDecimalUtils.log10(negativeInput, mc), "Log10 of non-positive value should throw an exception");
+}
 
     // Various tests for BigDecimalUtil.floor works as intended
     
@@ -331,4 +407,33 @@ public class BigDecimalUtilsTest {
         assertEquals(expected, result);     
     }
     
+    @Test
+    public void testFactorial() {
+        // Test with a positive integer
+        BigDecimal input = new BigDecimal(5);
+        MathContext mc = MathContext.DECIMAL32;
+        BigDecimal expected = new BigDecimal(120);
+        assertEquals(expected, BigDecimalUtils.factorial(input, mc));
+
+        // Test with a decimal number
+        input = new BigDecimal(4.5);
+        expected = new BigDecimal(24);
+        assertEquals(expected, BigDecimalUtils.factorial(input, mc));
+
+        // Test with zero
+        input = new BigDecimal(0);
+        expected = new BigDecimal(1);
+        assertEquals(expected, BigDecimalUtils.factorial(input, mc));
+
+        // Test with a negative number (expecting an exception)
+        input = new BigDecimal(-3);
+        boolean exceptionThrown = false;
+        try {
+            BigDecimalUtils.factorial(input, mc);
+        } catch (IllegalArgumentException e) {
+            exceptionThrown = true;
+        }
+        assertTrue(exceptionThrown);
+    }
 }
+    

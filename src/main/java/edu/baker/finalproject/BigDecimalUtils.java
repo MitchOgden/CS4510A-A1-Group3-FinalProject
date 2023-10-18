@@ -231,11 +231,13 @@ public class BigDecimalUtils {
     /**
      * Rounds a BigDecimal value to the nearest integer.
      * @param value The value to round.
+     * @param mc
      * @return Rounded value.
      */
-    public static BigDecimal round(BigDecimal value) {
-        // return value.setScale(0, RoundingMode.HALF_UP);
-        return BigDecimal.ZERO;
+    public static BigDecimal round(BigDecimal value, MathContext mc) {
+        double xDouble = value.doubleValue();
+        BigDecimal rounded = new BigDecimal(Math.round(xDouble), mc);
+        return rounded;
     }
     
     /**

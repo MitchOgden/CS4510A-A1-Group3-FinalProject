@@ -188,6 +188,10 @@ public class BigDecimalUtilsTest {
     
     @Test
     public void testRound() {
+        BigDecimal x = new BigDecimal("3.14159", mc);
+        BigDecimal expected = new BigDecimal(Math.round(x.doubleValue()), mc);
+        BigDecimal result = BigDecimalUtils.round(x, mc);
+        assertEquals(expected, result);
     }
     
 }

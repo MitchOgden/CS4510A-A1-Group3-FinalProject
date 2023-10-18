@@ -19,7 +19,7 @@ import java.math.MathContext;
  */
 public class BigDecimalUtilsTest {
     
-    MathContext mc = new MathContext(2);
+    MathContext mc = new MathContext(10);
     
     public BigDecimalUtilsTest() {
     }
@@ -76,6 +76,23 @@ public class BigDecimalUtilsTest {
     public void testSqrt() {
     }
 
+    // Tests for iroot
+    @Test
+    void testIrootCubeRoot() {
+        BigDecimal base = new BigDecimal(27);
+        BigDecimal root = new BigDecimal(3);
+        BigDecimal result = BigDecimalUtils.iroot(base, root, mc);
+        assertEquals(new BigDecimal(3).setScale(mc.getPrecision(), mc.getRoundingMode()), result);
+    }
+
+    @Test
+    void testIrootSquareRoot() {
+        BigDecimal base = new BigDecimal(16);
+        BigDecimal root = new BigDecimal(2);
+        BigDecimal result = BigDecimalUtils.iroot(base, root, mc);
+        assertEquals(new BigDecimal(4).setScale(mc.getPrecision(), mc.getRoundingMode()), result);
+    }
+    
     @Test
     public void testSin() {
     }

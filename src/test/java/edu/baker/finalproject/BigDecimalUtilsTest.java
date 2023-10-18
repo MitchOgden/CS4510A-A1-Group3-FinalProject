@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 /**
  *
@@ -110,6 +112,19 @@ public class BigDecimalUtilsTest {
 
     @Test
     public void testCeil() {
+        MathContext mc = MathContext.DECIMAL32;
+
+        BigDecimal test1 = new BigDecimal("3.14");
+        BigDecimal result1 = BigDecimalUtils.ceil(test1, mc);
+        System.out.println(result1.equals(new BigDecimal("4"))); // Output: true
+
+        BigDecimal test2 = new BigDecimal("-2.718");
+        BigDecimal result2 = BigDecimalUtils.ceil(test2, mc);
+        System.out.println(result2.equals(new BigDecimal("-2"))); // Output: true
+
+        BigDecimal test3 = new BigDecimal("0");
+        BigDecimal result3 = BigDecimalUtils.ceil(test3, mc);
+        System.out.println(result3.equals(new BigDecimal("0"))); // Output: true
     }
 
     @Test

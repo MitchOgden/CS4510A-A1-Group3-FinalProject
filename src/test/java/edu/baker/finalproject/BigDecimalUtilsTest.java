@@ -106,8 +106,27 @@ public class BigDecimalUtilsTest {
         assertEquals(expected, result);
     }
 
-    @Test
-    public void testCos() {
+    /**
+     * Test of BigDecimal cos method, of class BigDecimalUtils
+     */
+    @Test 
+    public void testCos(){
+        BigDecimal radians = new BigDecimal("1.04719755119659774615421446109316762806572313312535");
+        MathContext var = new MathContext(15);
+        BigDecimal result = BigDecimalUtils.cos(radians, var);
+        
+        BigDecimal expected = new BigDecimal("0.500000000000000");
+        
+        assertEquals(expected, result);
+        
+        BigDecimal pi = BigDecimalUtils.pi(mc);
+        BigDecimal negativePi = pi.negate();
+        
+        BigDecimal result1 = BigDecimalUtils.cos(pi, mc);
+        BigDecimal result2 = BigDecimalUtils.cos(negativePi, mc);
+        
+        assertEquals(BigDecimal.ONE.negate(), result1, "Cosine of pi is -1");
+        assertEquals(BigDecimal.ONE.negate(), result2, "Cosine of negative pi is -1");
     }
 
     /**

@@ -184,8 +184,8 @@ public static BigDecimal asin(BigDecimal x, MathContext mc) {
      * @return Arccosine of value.
      */
     public static BigDecimal acos(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.acos(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
+        BigDecimal piOver2 = BigDecimal.valueOf(Math.PI).divide(BigDecimal.valueOf(2), mc);
+        return piOver2.subtract(asin(value, mc));
     }
 
     /**

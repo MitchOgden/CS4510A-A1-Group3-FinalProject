@@ -360,9 +360,17 @@ public class BigDecimalUtils {
     * @return The angle whose tangent is y/x.
     */
    public static BigDecimal atan2(BigDecimal y, BigDecimal x, MathContext mc) {
-       return BigDecimal.ZERO;
+       //Convert BigDecimal arguments to double 
+       double yDouble = y.doubleValue();
+       double xDouble = x.doubleValue();
+       
+       //Math.atan2 to calculate the arctangent of y/x
+       double result = Math.atan2(yDouble, xDouble);
+       
+       //Convert back to BigDecimal
+       return new BigDecimal(result, mc);
    }
-
+    
    /**
     * Returns the mathematical constant e.
     * @param mc MathContext for precision.

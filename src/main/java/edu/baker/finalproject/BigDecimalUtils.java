@@ -97,8 +97,10 @@ public class BigDecimalUtils {
      * @return base raised to the power of exponent.
      */
     public static BigDecimal pow(BigDecimal base, BigDecimal exponent, MathContext mc) {
-        // return new BigDecimal(Math.pow(base.doubleValue(), exponent), mc);
-        return BigDecimal.ZERO;
+        double baseDouble = base.doubleValue();
+        double powerDouble = exponent.doubleValue();
+        double resultDouble = Math.pow(baseDouble, powerDouble);
+        return new BigDecimal(resultDouble, mc);
     }
 
     /**

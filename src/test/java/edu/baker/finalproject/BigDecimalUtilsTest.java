@@ -70,6 +70,11 @@ public class BigDecimalUtilsTest {
 
     @Test
     public void testPow() {
+        BigDecimal base = new BigDecimal("2", mc);
+        BigDecimal power = new BigDecimal("3", mc);
+        BigDecimal expected = new BigDecimal(Math.pow(base.doubleValue(), power.doubleValue()), mc);
+        BigDecimal result = BigDecimalUtils.pow(base, power, mc);
+        assertEquals(expected, result);
     }
 
     @Test

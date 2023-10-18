@@ -194,10 +194,8 @@ public static BigDecimal asin(BigDecimal x, MathContext mc) {
      * @param mc MathContext for precision.
      * @return Arctangent of value.
      */
-    public static BigDecimal atan(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.atan(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
-
+  public static BigDecimal atan(BigDecimal value, MathContext mc) {
+        return new BigDecimal(Math.atan(value.doubleValue()), mc);
     }
 
     /**
@@ -395,7 +393,7 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
        //Convert back to BigDecimal
        return new BigDecimal(result, mc);
    }
-    
+   
    /**
     * Returns the mathematical constant e.
     * @param mc MathContext for precision.

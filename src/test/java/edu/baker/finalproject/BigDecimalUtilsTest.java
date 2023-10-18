@@ -95,6 +95,10 @@ public class BigDecimalUtilsTest {
     
     @Test
     public void testSin() {
+        BigDecimal input = new BigDecimal("0.5", mc);
+        BigDecimal expected = new BigDecimal(Math.sin(input.doubleValue()), mc);
+        BigDecimal result = BigDecimalUtils.sin(input, mc);
+        assertEquals(expected, result);
     }
 
     @Test

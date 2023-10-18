@@ -296,5 +296,39 @@ public class BigDecimalUtilsTest {
         BigDecimal result = BigDecimalUtils.pi(mc);
         assertEquals(expected, result);
     }
+
+    /** 
+     * Test of BigDecimal atan2 method, of class BigDecimalUtils
+     */
+    @Test
+    public void testAtan2(){
+        //Test atan2(1, 1)
+        BigDecimal y = new BigDecimal("1");
+        BigDecimal x = new BigDecimal("1");
+        BigDecimal result = BigDecimalUtils.atan2(y, x, mc);
+        BigDecimal expected = new BigDecimal(Math.PI / 4, mc);
+        assertEquals(expected, result);
+        
+        //Test atan2 (1, -1)
+        y = new BigDecimal("1");
+        x = new BigDecimal("-1");
+        result = BigDecimalUtils.atan2(y, x, mc);
+        expected = new BigDecimal(3 * Math.PI / 4, mc);
+        assertEquals(expected, result);
+        
+        //Test atan2 (0, 1)
+        y = new BigDecimal("0");
+        x = new BigDecimal("1");
+        result = BigDecimalUtils.atan2(y, x, mc);
+        expected = BigDecimal.ZERO;
+        assertEquals(expected, result);
+        
+        //Test atan2 (0, 0)
+        y = BigDecimal.ZERO;
+        x = BigDecimal.ZERO;
+        result = BigDecimalUtils.atan2(y, x, mc);
+        expected = BigDecimal.ZERO;
+        assertEquals(expected, result);     
+    }
     
 }

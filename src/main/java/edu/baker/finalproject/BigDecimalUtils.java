@@ -139,13 +139,20 @@ public class BigDecimalUtils {
 
     /**
      * Computes the tangent of a BigDecimal angle in radians.
-     * @param value The angle in radians.
+     * @param x
      * @param mc MathContext for precision.
      * @return Tangent of value.
      */
-    public static BigDecimal tan(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.tan(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
+    public static BigDecimal tan(BigDecimal x, MathContext mc) {
+        //Convert BigDecimal arguments to doubles
+        double convertToDouble = x.doubleValue();
+        
+        //Math.tan to calculate tangent
+        double result = Math.tan(convertToDouble);
+        
+        //Convert back to BigDecimal
+        return new BigDecimal(result, mc);
+        
     }
 
     /**
@@ -250,16 +257,23 @@ public class BigDecimalUtils {
        return BigDecimal.ZERO;
    }
 
-   /**
+    /**
     * Truncates a BigDecimal number.
     * @param x The number.
     * @param mc MathContext for precision.
     * @return Truncated value of x.
     */
    public static BigDecimal trunc(BigDecimal x, MathContext mc) {
-       return BigDecimal.ZERO;
+       //Convert BigDecimal arguments to doubles
+       double convertToDouble = x.doubleValue();
+       
+       //Math.floor for positive values, Math.ceil for negative value 
+       double result = convertToDouble > 0 ? Math.floor(convertToDouble) : Math.ceil(convertToDouble);
+       
+       //Convert back to BigDecimal
+       return new BigDecimal(result, mc);
    }
-
+    
    /**
     * Raises a BigDecimal to the power of another BigDecimal exponent.
     * @param base The base number.
@@ -353,13 +367,17 @@ public class BigDecimalUtils {
         return new BigDecimal(e, mc); // Converting back to BigDecimal
    }
 
-   /**
+    /**
     * Returns the mathematical constant pi.
     * @param mc MathContext for precision.
     * @return The value of pi.
     */
    public static BigDecimal pi(MathContext mc) {
-       return BigDecimal.ZERO;
+       //Math.PI to calculate pi
+       double piValue = Math.PI;
+       
+       //Convert to BigDecimal
+       return new BigDecimal(piValue, mc);
    }
 
    /**
@@ -370,5 +388,22 @@ public class BigDecimalUtils {
     */
    public static BigDecimal factorial(BigDecimal x, MathContext mc) {
        return BigDecimal.ZERO;
+   }
+
+    /**
+    * Computes the exponential of a BigDecimal number.
+    * @param x The base number.
+    * @param mc MathContext for precision.
+    * @return exponential of x.
+    */
+   public static BigDecimal exp(BigDecimal x, MathContext mc){
+       //Covert BigDecimal arguments to double 
+       double convertToDouble = x.doubleValue();
+       
+       //Math.exp to calculate the exponential 
+       double result = Math.exp(convertToDouble);
+       
+       //Convert back to BigDecimal
+       return new BigDecimal(result, mc);
    }
 }

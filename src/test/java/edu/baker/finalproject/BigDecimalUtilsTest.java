@@ -15,9 +15,11 @@ import java.math.MathContext;
 
 /**
  *
- * @author mitch
+ * 
  */
 public class BigDecimalUtilsTest {
+    
+    MathContext mc = new MathContext(2);
     
     public BigDecimalUtilsTest() {
     }
@@ -106,8 +108,34 @@ public class BigDecimalUtilsTest {
     public void testLog10() {
     }
 
+    // Various tests for BigDecimalUtil.floor works as intended
+    
     @Test
-    public void testFloor() {
+    public void testFloorPositiveValue() {
+        BigDecimal input = new BigDecimal("10.75");
+        BigDecimal result = BigDecimalUtil.floor(input);
+        assertEquals(0, result.compareTo(new BigDecimal("10")));
+    }
+
+    @Test
+    public void testFloorNegativeValue() {
+        BigDecimal input = new BigDecimal("-10.75");
+        BigDecimal result = BigDecimalUtil.floor(input);
+        assertEquals(0, result.compareTo(new BigDecimal("-11")));
+    }
+
+    @Test
+    public void testFloorZero() {
+        BigDecimal input = BigDecimal.ZERO;
+        BigDecimal result = BigDecimalUtils.floor(input);
+        assertEquals(0, result.compareTo(BigDecimal.ZERO));
+    }
+
+    @Test
+    public void testFloorIntegerValue() {
+        BigDecimal input = new BigDecimal("11");
+        BigDecimal result = BigDecimalUtils.floor(input);
+        assertEquals(0, result.compareTo(new BigDecimal("11")));
     }
 
     @Test

@@ -112,8 +112,6 @@ public class BigDecimalUtilsTest {
 
     @Test
     public void testCeil() {
-        MathContext mc = MathContext.DECIMAL32;
-
         BigDecimal test1 = new BigDecimal("3.14");
         BigDecimal result1 = BigDecimalUtils.ceil(test1, mc);
         System.out.println(result1.equals(new BigDecimal("4"))); // Output: true

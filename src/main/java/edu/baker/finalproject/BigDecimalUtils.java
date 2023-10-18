@@ -209,9 +209,8 @@ public class BigDecimalUtils {
      * @return Rounded down value.
      */
     public static BigDecimal floor(BigDecimal value) {
-        // return value.setScale(0, RoundingMode.FLOOR);
-        return BigDecimal.ZERO;
-
+        // Set the scale to 0 and use RoundingMode.FLOOR for rounding down.
+        return value.setScale(0, RoundingMode.FLOOR);
     }
 
     /**

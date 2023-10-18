@@ -184,6 +184,16 @@ public static BigDecimal asin(BigDecimal x, MathContext mc) {
      * @return Arccosine of value.
      */
     public static BigDecimal acos(BigDecimal value, MathContext mc) {
+        //AK
+        if (x.compareTo(BigDecimal.ONE) > 0 || x.compareTo(BigDecimal.ONE.negate()) < 0) {
+            throw new IllegalArgumentException("Input must be in the range [-1, 1].");
+        }
+
+        double arccosine = Math.acos(x.doubleValue());
+        
+        return new BigDecimal(arccosine, mc);
+        //AK END
+        
         BigDecimal piOver2 = BigDecimal.valueOf(Math.PI).divide(BigDecimal.valueOf(2), mc);
         return piOver2.subtract(asin(value, mc));
     }
@@ -273,7 +283,12 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
     * @return Reciprocal of x.
     */
    public static BigDecimal recip(BigDecimal x, MathContext mc) {
-       return BigDecimal.ZERO;
+       if(x.compareTo(BigDecimal.ZERO) == 0) {
+           throw new ArithmenticException("Cannot calculate reciprocal of zero.");
+       }
+
+       double reciprocal = 1.0/x.doubleValue();
+       return new BigDecimal(reciprocal, mc);
    }
 
     /**
@@ -322,7 +337,13 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
     * @return base raised to the power of exponent.
     */
    public static BigDecimal ipow(BigDecimal base, long ipower, MathContext mc) {
-       return BigDecimal.ZERO;
+       if (ipower < 0) {
+            throw new IllegalArgumentException("Exponent must be non-negative.");
+        }
+
+        double ip = Math.pow(base.doubleValue(), ipower);
+
+        return new BigDecimal(ip, mc);
    }
 
    /**
@@ -372,7 +393,8 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
     * @return 10 raised to the power of x.
     */
    public static BigDecimal exp10(BigDecimal x, MathContext mc) {
-       return BigDecimal.ZERO;
+        double ex10 = Math.pow(10, x.doubleValue());
+        return new BigDecimal(ex10, mc);
    }
 
    /**

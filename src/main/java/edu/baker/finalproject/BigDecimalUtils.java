@@ -119,8 +119,9 @@ public class BigDecimalUtils {
      * @return Sine of value.
      */
     public static BigDecimal sin(BigDecimal value, MathContext mc) {
-        // return new BigDecimal(Math.sin(value.doubleValue()), mc);
-        return BigDecimal.ZERO;
+        double xDouble = value.doubleValue(); // Converting BigDecimal to double
+        double sinValue = Math.sin(xDouble); // Using Math.sin to get the sine value
+        return new BigDecimal(sinValue, mc); // Converting back to BigDecimal
     }
 
     /**

@@ -217,14 +217,13 @@ public class BigDecimalUtils {
     /**
      * Rounds up a BigDecimal value to the nearest integer.
      * @param x
-     * @param mc
      * @return Rounded up value.
      */
-    public static BigDecimal ceil(BigDecimal x, MathContext mc) {
+    public static BigDecimal ceil(BigDecimal x) {
         // return value.setScale(0, RoundingMode.CEILING);
         double doubleValue = x.doubleValue();
         double ceilValue = Math.ceil(doubleValue);
-        return new BigDecimal(ceilValue, mc);
+        return new BigDecimal(ceilValue);
     }
 
     /**

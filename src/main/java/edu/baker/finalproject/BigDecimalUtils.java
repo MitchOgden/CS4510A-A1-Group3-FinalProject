@@ -175,7 +175,7 @@ public static BigDecimal asin(BigDecimal x, MathContext mc) {
      * @param mc MathContext for precision.
      * @return Arccosine of value.
      */
-    public static BigDecimal acos(BigDecimal value, MathContext mc) {
+    public static BigDecimal acos(BigDecimal x, MathContext mc) {
         //AK
         if (x.compareTo(BigDecimal.ONE) > 0 || x.compareTo(BigDecimal.ONE.negate()) < 0) {
             throw new IllegalArgumentException("Input must be in the range [-1, 1].");
@@ -185,9 +185,6 @@ public static BigDecimal asin(BigDecimal x, MathContext mc) {
         
         return new BigDecimal(arccosine, mc);
         //AK END
-        
-        BigDecimal piOver2 = BigDecimal.valueOf(Math.PI).divide(BigDecimal.valueOf(2), mc);
-        return piOver2.subtract(asin(value, mc));
     }
 
     /**
@@ -276,7 +273,7 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
     */
    public static BigDecimal recip(BigDecimal x, MathContext mc) {
        if(x.compareTo(BigDecimal.ZERO) == 0) {
-           throw new ArithmenticException("Cannot calculate reciprocal of zero.");
+           throw new ArithmeticException("Cannot calculate reciprocal of zero.");
        }
 
        double reciprocal = 1.0/x.doubleValue();

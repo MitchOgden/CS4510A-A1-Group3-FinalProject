@@ -370,7 +370,6 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
             throw new ArithmeticException("Zero root");
         }
 
-        BigDecimal one = new BigDecimal(1, mc);
         BigDecimal n = new BigDecimal(iroot);
         BigDecimal n1 = new BigDecimal(iroot - 1);
         BigDecimal guess = base.divide(n, mc);

@@ -17,8 +17,7 @@ public class BigDecimalUtils {
      * @return Sum of a and b.
      */
     public static BigDecimal add(BigDecimal a, BigDecimal b, MathContext mc) {
-        // return a.add(b, mc);
-        return BigDecimal.ZERO;
+        return a.add(b, mc);
     }
 
     /**
@@ -29,8 +28,7 @@ public class BigDecimalUtils {
      * @return a - b.
      */
     public static BigDecimal subtract(BigDecimal a, BigDecimal b, MathContext mc) {
-        // return a.subtract(b, mc);
-        return BigDecimal.ZERO;
+        return a.subtract(b, mc);
     }
 
     /**
@@ -41,8 +39,7 @@ public class BigDecimalUtils {
      * @return a * b.
      */
     public static BigDecimal multiply(BigDecimal a, BigDecimal b, MathContext mc) {
-        // return a.multiply(b, mc);
-        return BigDecimal.ZERO;
+        return a.multiply(b, mc);
     }
 
     /**
@@ -53,8 +50,7 @@ public class BigDecimalUtils {
      * @return a / b.
      */
     public static BigDecimal divide(BigDecimal a, BigDecimal b, MathContext mc) {
-        // return a.divide(b, mc);
-        return BigDecimal.ZERO;
+        return a.divide(b, mc);
     }
 
     /**
@@ -64,8 +60,7 @@ public class BigDecimalUtils {
      * @return Minimum of a and b.
      */
     public static BigDecimal min(BigDecimal a, BigDecimal b) {
-        // return a.min(b);
-        return BigDecimal.ZERO;
+        return a.min(b);
     }
 
     /**
@@ -75,8 +70,7 @@ public class BigDecimalUtils {
      * @return Maximum of a and b.
      */
     public static BigDecimal max(BigDecimal a, BigDecimal b) {
-        // return a.max(b);
-        return BigDecimal.ZERO;
+        return a.max(b);
     }
 
     /**
@@ -85,8 +79,7 @@ public class BigDecimalUtils {
      * @return Absolute value of a.
      */
     public static BigDecimal abs(BigDecimal a) {
-        // return a.abs();
-        return BigDecimal.ZERO;
+        return a.abs();
     }
 
     /**
@@ -110,8 +103,7 @@ public class BigDecimalUtils {
      * @return Square root of value.
      */
     public static BigDecimal sqrt(BigDecimal value, MathContext mc) {
-        // return value.sqrt(mc);
-        return BigDecimal.ZERO;
+        return value.sqrt(mc);
     }
 
     /**

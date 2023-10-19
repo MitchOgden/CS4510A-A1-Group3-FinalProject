@@ -285,14 +285,14 @@ public class RPNCalculator {
     /**
      * Placeholder for future implementation related to variable x.
      */
-    void x() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void x() {
+        value(peek());
     }
 
     /**
      * Placeholder for future implementation related to variable y.
      */
-    void y() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void y() {
+        value(peekY());
     }
 }

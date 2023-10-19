@@ -25,3 +25,5 @@ replay_pid*
 
 # macOS system files
 **/.DS_Store
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+*.lst

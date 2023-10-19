@@ -27,3 +27,14 @@ replay_pid*
 **/.DS_Store
 target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 *.lst
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/vcs.xml
+target/surefire-reports/edu.baker.finalproject.BigDecimalUtilsTest.txt
+target/surefire-reports/edu.baker.finalproject.FinalProjectTest.txt
+target/surefire-reports/edu.baker.finalproject.RPNEquationProcessorTest.txt
+target/surefire-reports/TEST-edu.baker.finalproject.BigDecimalUtilsTest.xml
+target/surefire-reports/TEST-edu.baker.finalproject.FinalProjectTest.xml
+target/surefire-reports/TEST-edu.baker.finalproject.RPNEquationProcessorTest.xml

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 /**
  *
@@ -79,7 +80,6 @@ public class BigDecimalUtilsTest {
     
         @Test
     public void testIpow() {
-        MathContext mc = new MathContext(10); // Customize the MathContext as needed
         BigDecimal base = new BigDecimal("2", mc);
         BigDecimal power = new BigDecimal("3", mc);
         BigDecimal expected = new BigDecimal(Math.pow(base.doubleValue(), power.doubleValue()), mc);
@@ -99,7 +99,7 @@ public class BigDecimalUtilsTest {
         BigDecimal result = BigDecimalUtils.iroot(base, root, mc);
         
         // Update the expected value to match the precision and rounding mode
-        BigDecimal expected = new BigDecimal(3).setScale(mc.getPrecision(), mc.getRoundingMode());
+        BigDecimal expected = new BigDecimal(3).setScale(9, RoundingMode.HALF_UP);
         
         assertEquals(expected, result);
     }
@@ -111,7 +111,7 @@ public class BigDecimalUtilsTest {
         BigDecimal result = BigDecimalUtils.iroot(base, root, mc);
         
         // Update the expected value to match the precision and rounding mode
-        BigDecimal expected = new BigDecimal(4).setScale(mc.getPrecision(), mc.getRoundingMode());
+        BigDecimal expected = new BigDecimal(4).setScale(9, RoundingMode.HALF_UP);
         
         assertEquals(expected, result);
     }

@@ -390,15 +390,24 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
     * @return The angle whose tangent is y/x.
     */
    public static BigDecimal atan2(BigDecimal y, BigDecimal x, MathContext mc) {
-       //Convert BigDecimal arguments to double 
-       double yDouble = y.doubleValue();
-       double xDouble = x.doubleValue();
-       
-       //Math.atan2 to calculate the arctangent of y/x
-       double result = Math.atan2(yDouble, xDouble);
-       
-       //Convert back to BigDecimal
-       return new BigDecimal(result, mc);
+        if (x.compareTo(BigDecimal.ZERO) == 0) {
+            if (y.compareTo(BigDecimal.ZERO) > 0) {
+                return BigDecimalUtils.pi(mc).divide(new BigDecimal(2), mc); // pi/2
+            } else {
+                return BigDecimalUtils.pi(mc).divide(new BigDecimal(-2), mc); // -pi/2
+            }
+        } else {
+            BigDecimal atanResult = BigDecimalUtils.atan(y.divide(x, mc), mc);
+            if (x.compareTo(BigDecimal.ZERO) > 0) {
+                return atanResult;
+            } else {
+                if (y.compareTo(BigDecimal.ZERO) >= 0) {
+                    return atanResult.add(BigDecimalUtils.pi(mc), mc); // atan(y/x) + pi
+                } else {
+                    return atanResult.subtract(BigDecimalUtils.pi(mc), mc); // atan(y/x) - pi
+                }
+            }
+        }
    }
    
    /**

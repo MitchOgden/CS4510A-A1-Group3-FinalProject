@@ -314,14 +314,31 @@ public void testLog10() {
         assertEquals(expected, result);
     }
     
+    /**
+     * Test of BigDecimal round method, of class BigDecimalUtils
+     */
     @Test
     public void testRound() {
-        BigDecimal x = new BigDecimal("3.14159", mc);
-        BigDecimal expected = new BigDecimal(Math.round(x.doubleValue()), mc);
-        BigDecimal result = BigDecimalUtils.round(x, mc);
+        //Positive value
+        BigDecimal x1 = new BigDecimal("3.14159", mc);
+        BigDecimal expected = x1.setScale(0, RoundingMode.HALF_UP).round(mc);
+        BigDecimal result = BigDecimalUtils.round(x1, mc);
         assertEquals(expected, result);
+        
+        //Negative value 
+        BigDecimal x2 = new BigDecimal("-2.71828", mc);
+        BigDecimal expected2 = x2.setScale(0, RoundingMode.HALF_UP).round(mc);
+        BigDecimal result2 = BigDecimalUtils.round(x2, mc);
+        assertEquals(expected2, result2);
+        
+        //Specified precision
+        MathContext mc2 = new MathContext(3);
+        BigDecimal x3 = new BigDecimal("3.14159", mc2);
+        BigDecimal expected3 = x3.setScale(0, RoundingMode.HALF_UP).round(mc2);
+        BigDecimal result3 = BigDecimalUtils.round(x3, mc2);
+        assertEquals(expected3, result3);
     }
-
+    
     /**
      * Test of BigDecimal trunc method, of class BigDecimalUtils
      */

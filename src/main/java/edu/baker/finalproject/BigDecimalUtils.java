@@ -274,8 +274,8 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
            throw new ArithmeticException("Cannot calculate reciprocal of zero.");
        }
 
-       double reciprocal = 1.0/x.doubleValue();
-       return new BigDecimal(reciprocal, mc);
+       BigDecimal reciprocal = BigDecimal.ONE.divide(x, mc);
+       return new BigDecimal(reciprocal);
    }
 
     /**

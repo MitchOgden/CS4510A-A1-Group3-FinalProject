@@ -472,13 +472,13 @@ public void testLog10() {
     @Test
     public void testExp10(){
         MathContext mc2 = new MathContext(2);
-        //Positive expontent
+        //Positive exponent
         BigDecimal x1 = new BigDecimal("2", mc);
         BigDecimal expected1 = new BigDecimal("100", mc);
         BigDecimal result1 = BigDecimalUtils.exp10(x1, mc);
         assertEquals(expected1, result1);
         
-        //Negative expontent
+        //Negative exponent
         BigDecimal x2 = new BigDecimal("-2", mc);
         BigDecimal expected2 = new BigDecimal("0.010", mc2);
         BigDecimal result2 = BigDecimalUtils.exp10(x2, mc2);

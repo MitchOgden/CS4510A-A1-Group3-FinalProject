@@ -466,17 +466,29 @@ public void testLog10() {
         assertTrue(exceptionThrown);
     }
 
+    /** 
+     * Test of BigDecimal exp10 method, of class BigDecimalUtils
+     */
     @Test
     public void testExp10(){
-        MathContext mc = new MathContext(5);
-          
-        // Test case 1: 10^2
-        BigDecimal result1 = BigDecimalUtils.exp10(new BigDecimal("2"), mc);
-        assertEquals(new BigDecimal("100"), result1);
-
-        // Test case 2: 10^(-1)
-        BigDecimal result2 = BigDecimalUtils.exp10(new BigDecimal("-1"), mc);
-        assertEquals(new BigDecimal("0.10000"), result2);
+        MathContext mc2 = new MathContext(2);
+        //Positive expontent
+        BigDecimal x1 = new BigDecimal("2", mc);
+        BigDecimal expected1 = new BigDecimal("100", mc);
+        BigDecimal result1 = BigDecimalUtils.exp10(x1, mc);
+        assertEquals(expected1, result1);
+        
+        //Negative expontent
+        BigDecimal x2 = new BigDecimal("-2", mc);
+        BigDecimal expected2 = new BigDecimal("0.010", mc2);
+        BigDecimal result2 = BigDecimalUtils.exp10(x2, mc2);
+        assertEquals(expected2, result2);
+        
+        //Zero exponent
+        BigDecimal x3 = BigDecimal.ZERO;
+        BigDecimal expected3 = BigDecimal.ONE;
+        BigDecimal result3 = BigDecimalUtils.exp10(x3, mc);
+        assertEquals(expected3, result3);      
     }
 
     @Test

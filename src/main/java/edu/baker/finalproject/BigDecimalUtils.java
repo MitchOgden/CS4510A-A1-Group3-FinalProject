@@ -255,14 +255,12 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
 
     /**
      * Rounds a BigDecimal value to the nearest integer.
-     * @param value The value to round.
-     * @param mc
+     * @param x 
+     * @param mc 
      * @return Rounded value.
      */
-    public static BigDecimal round(BigDecimal value, MathContext mc) {
-        double xDouble = value.doubleValue();
-        BigDecimal rounded = new BigDecimal(Math.round(xDouble), mc);
-        return rounded;
+    public static BigDecimal round(BigDecimal x, MathContext mc) {
+        return x.setScale(0, RoundingMode.HALF_UP).round(mc);
     }
     
     /**

@@ -372,15 +372,14 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
         return guess;
    }
 
-   /**
+    /**
     * Computes 10 raised to the power of a BigDecimal number.
     * @param x The exponent.
     * @param mc MathContext for precision.
     * @return 10 raised to the power of x.
     */
    public static BigDecimal exp10(BigDecimal x, MathContext mc) {
-        double ex10 = Math.pow(10, x.doubleValue());
-        return new BigDecimal(ex10, mc);
+       return pow(BigDecimal.TEN, x, mc);
    }
 
    /**

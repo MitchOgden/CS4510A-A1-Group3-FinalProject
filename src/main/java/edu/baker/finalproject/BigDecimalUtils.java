@@ -302,18 +302,13 @@ public static BigDecimal ceil(BigDecimal x, MathContext mc) {
     * @param mc MathContext for precision.
     * @return base raised to the power of exponent.
     */
- public static BigDecimal ipow(BigDecimal base, BigDecimal power, MathContext mc) {
-    // Convert BigDecimal values to double
-    double baseDouble = base.doubleValue();
-    double powerDouble = power.doubleValue();
-
-    // Perform the power operation using double arithmetic
-    double resultDouble = Math.pow(baseDouble, powerDouble);
-
-    // Convert the result back to BigDecimal with the specified MathContext
-    BigDecimal resultBigDecimal = new BigDecimal(resultDouble, mc);
-
-    return resultBigDecimal;
+ public static BigDecimal pow(BigDecimal base, BigDecimal power, MathContext mc) {
+        BigDecimal logBase = log(base,mc);
+        BigDecimal logPower = logBase.multiply(power,mc);
+        BigDecimal result = exp(logPower,mc);
+        
+        return result;
+    
 }
 
    /**

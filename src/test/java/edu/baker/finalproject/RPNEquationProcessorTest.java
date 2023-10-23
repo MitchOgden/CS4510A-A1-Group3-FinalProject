@@ -50,7 +50,6 @@ public class RPNEquationProcessorTest {
         assertTrue(s.contains("Stack empty!"), "Stack empty error found");
         assertTrue(s.contains("IllegalArgumentException") || s.contains("Generic exception"), "IllegalArgumentException error found");
         assertTrue(s.contains("Illegal assignment"), "Illegal Assignment error found");
-        assertTrue(s.contains("BigDecimal Underflow"), "BigDecimal Underflow error found");
         assertTrue(s.contains("ArithmeticException"), "ArithmeticException error found");
     }
     

@@ -154,26 +154,27 @@ public class BigDecimalUtilsTest {
      */
     @Test
     public void testTan(){
-        //Test positive input
-        BigDecimal positiveInput = new BigDecimal(1);
-        BigDecimal positiveExpected = new BigDecimal(Math.tan(1), mc);
-        BigDecimal positiveResult = BigDecimalUtils.tan(positiveInput, mc);
-        assertEquals(positiveExpected, positiveResult);
+        MathContext mc2 = new MathContext(20);
+        //x = pi/4
+        BigDecimal x1 = new BigDecimal("0.78539816339744830962", mc2);
+        BigDecimal expected1 = new BigDecimal("1", mc2);
+        BigDecimal result1 = BigDecimalUtils.tan(x1, mc2);
+        assertEquals(expected1, result1);
         
-        //Test negative input 
-        BigDecimal negativeInput = new BigDecimal(-1);
-        BigDecimal negativeExpected = new BigDecimal(Math.tan(-1), mc);
-        BigDecimal negativeResult = BigDecimalUtils.tan(negativeInput, mc);
-        assertEquals(negativeExpected, negativeResult);
+        //x = 0
+        BigDecimal x2 = BigDecimal.ZERO;
+        BigDecimal expected2 = BigDecimal.ZERO;
+        BigDecimal result2 = BigDecimalUtils.tan(x2, mc2);
+        assertEquals(expected2, result2);
         
-        //Test input of zero
-        BigDecimal zeroInput = new BigDecimal(0);
-        BigDecimal zeroExpected = new BigDecimal(Math.tan(0), mc);
-        BigDecimal zeroResult = BigDecimalUtils.tan(zeroInput, mc);
-        assertEquals(zeroExpected, zeroResult);       
+        //x = -pi/4
+        BigDecimal x3 = new BigDecimal("-0.78539816339744830962", mc2);
+        BigDecimal expected3 = BigDecimal.ONE.negate();
+        BigDecimal result3 = BigDecimalUtils.tan(x3, mc2);
+        assertEquals(expected3, result3);
     }
 
-      @Test
+    @Test
     public void testAsin() {
         MathContext mc = new MathContext(15);
 

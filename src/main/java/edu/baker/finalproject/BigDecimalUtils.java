@@ -185,19 +185,30 @@ public class BigDecimalUtils {
 
     /**
      * Computes the arcsine of a BigDecimal value.
-     * @param value The value.
+     * @param x
      * @param mc MathContext for precision.
      * @return Arcsine of value.
      */
-public static BigDecimal asin(BigDecimal x, MathContext mc) {
-    // Ensure x is within the range [-1, 1] as the arcsine is only defined in that range.
-    if (x.compareTo(BigDecimal.ONE) > 0 || x.compareTo(BigDecimal.ONE.negate()) < 0) {
-        throw new ArithmeticException("Arcsine is undefined for values outside the range [-1, 1].");
+    public static BigDecimal asin(BigDecimal x, MathContext mc) {
+        BigDecimal sqrtTwo = sqrt(new BigDecimal("2"), mc);
+        BigDecimal sqrtOneMinusXSquared = sqrt(BigDecimal.ONE.subtract(x.multiply(x, mc), mc), mc);
+        int comparison = x.compareTo(BigDecimal.ONE.divide(sqrtTwo, mc));
+        
+        if (comparison == 1){
+            BigDecimal halfPi = pi(mc).divide(BigDecimal.valueOf(2), mc);
+            BigDecimal arcsinSqrt = asin(sqrtOneMinusXSquared, mc);
+            return halfPi.subtract(arcsinSqrt, mc);
+        } else if (comparison == 0){
+            BigDecimal halfPi = pi(mc).divide(BigDecimal.valueOf(2), mc);
+            return halfPi;
+        } else if (comparison == -1){
+            BigDecimal minusHalfPi = pi(mc).divide(BigDecimal.valueOf(-2), mc);
+            BigDecimal arcsinSqrt = asin(sqrtOneMinusXSquared, mc);
+            return minusHalfPi.add(arcsinSqrt, mc);
+        } else {
+            throw new IllegalArgumentException("Input value x is out of the valid range.");
+        }
     }
-
-    double result = Math.asin(x.doubleValue());
-    return new BigDecimal(result, mc);
-}
 
     /**
      * Computes the arccosine of a BigDecimal value.

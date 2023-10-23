@@ -41,20 +41,52 @@ public class BigDecimalUtilsTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of BigDecimal add method, of class BigDecimalUtils
+     */
     @Test
     public void testAdd() {
+        BigDecimal a = new BigDecimal("1.23456789", mc);
+        BigDecimal b = new BigDecimal("2.34567890", mc);
+        BigDecimal expected = new BigDecimal("3.58024679", mc);
+        BigDecimal result = BigDecimalUtils.add(a, b, mc);
+        assertEquals(expected, result);
     }
-
+    
+    /**
+     * Test of BigDecimal subtract method, of class BigDecimalUtils
+     */
     @Test
     public void testSubtract() {
+        BigDecimal a = new BigDecimal("3.58024679", mc);
+        BigDecimal b = new BigDecimal("1.23456789", mc);
+        BigDecimal expected = new BigDecimal("2.34567890", mc);
+        BigDecimal result = BigDecimalUtils.subtract(a, b, mc);
+        assertEquals(expected, result);
     }
 
+    /**
+     * Test of BigDecimal multiply method, of class BigDecimalUtils
+     */
     @Test
     public void testMultiply() {
+        BigDecimal a = new BigDecimal("1.23456789", mc);
+        BigDecimal b = new BigDecimal("2.34567890", mc);
+        BigDecimal expected = new BigDecimal("2.89320902", mc);
+        BigDecimal result = BigDecimalUtils.multiply(a, b, mc);
+        assertEquals(expected, result);
     }
 
+    /**
+     * Test of BigDecimal divide method, of class BigDecimalUtils
+     */
     @Test
     public void testDivide() {
+        BigDecimal a = new BigDecimal("2.89320902", mc);
+        BigDecimal b = new BigDecimal("1.23456789", mc);
+        BigDecimal expected = new BigDecimal("2.34000000", mc);
+        BigDecimal result = BigDecimalUtils.divide(a, b, mc);
+        assertEquals(expected, result);
     }
 
     @Test

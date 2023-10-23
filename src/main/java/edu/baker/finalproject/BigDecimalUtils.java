@@ -125,14 +125,46 @@ public class BigDecimalUtils {
      * @return Cosine of value.
      */
     public static BigDecimal cos(BigDecimal x, MathContext mc) {
-        //Convert BigDecimal argument to double 
-        double convertToDouble = x.doubleValue();
+        x = x.abs();
         
-        //Math.cos to calculate cosine
-        double result = Math.cos(convertToDouble);
+        BigDecimal TWO_PI = new BigDecimal("6.2831853071795864769252867665590057683943387987502116419498891846", mc);
+        while (x.compareTo(TWO_PI) > 0){
+            x = x.subtract(TWO_PI, mc);
+        }
         
-        //Convert back to BigDecimal
-        return new BigDecimal(result, mc);
+        BigDecimal PI = new BigDecimal("3.1415926535897932384626433832795028841971693993751058209749445923", mc);
+        while (x.compareTo(PI) > 0){
+            x = x.subtract(PI, mc);
+        }
+        
+        BigDecimal HALF_PI = new BigDecimal("1.5707963267948966192313216916397514420985846996875529104874722961", mc);
+        if (x.compareTo(HALF_PI) > 0){
+            BigDecimal xSquared = x.multiply(x, mc);
+            BigDecimal result = BigDecimal.ONE;
+            BigDecimal term = BigDecimal.ONE;
+            BigDecimal sign = BigDecimal.ONE;
+            for (int i = 2; i < 20; i += 2) {
+                term = term.multiply(xSquared, mc);
+                term = term.divide(BigDecimal.valueOf(i * (i - 1)), mc);
+                term = term.negate().multiply(sign, mc);
+                result = result.add(term, mc);
+                sign = sign.negate();          
+            }
+            return result.round(mc);
+        } else {
+            BigDecimal xSquared = x.multiply(x, mc);
+            BigDecimal result = BigDecimal.ONE;
+            BigDecimal term = BigDecimal.ONE;
+            BigDecimal sign = BigDecimal.ONE;
+            for (int i = 2; i < 20; i += 2){
+                term = term.multiply(xSquared, mc);
+                term = term.divide(BigDecimal.valueOf(i * (i - 1)), mc);
+                term = term.negate().multiply(sign, mc);
+                result = result.add(term, mc);
+                sign = sign.negate();
+            }
+            return result.round(mc);
+        }
     }
     
     /**

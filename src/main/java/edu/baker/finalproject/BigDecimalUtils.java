@@ -167,22 +167,20 @@ public class BigDecimalUtils {
         }
     }
     
-    /**
+     /**
      * Computes the tangent of a BigDecimal angle in radians.
      * @param x
      * @param mc MathContext for precision.
      * @return Tangent of value.
      */
     public static BigDecimal tan(BigDecimal x, MathContext mc) {
-        //Convert BigDecimal arguments to doubles
-        double convertToDouble = x.doubleValue();
+        BigDecimal sinX = sin(x, mc);
+        BigDecimal cosX = cos(x, mc);
         
-        //Math.tan to calculate tangent
-        double result = Math.tan(convertToDouble);
-        
-        //Convert back to BigDecimal
-        return new BigDecimal(result, mc);
-        
+        if (cosX.compareTo(BigDecimal.ZERO) == 0){
+            throw new ArithmeticException("Tangent is undefined for this value.");
+        }
+        return sinX.divide(cosX, mc);
     }
 
     /**

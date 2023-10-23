@@ -174,29 +174,34 @@ public class BigDecimalUtilsTest {
         assertEquals(expected3, result3);
     }
 
+    /**
+     * Test of BigDecimal asin method, of class BigDecimalUtils
+     */
     @Test
     public void testAsin() {
-        MathContext mc = new MathContext(15);
-
-        // Test positive input
-        BigDecimal positiveInput = new BigDecimal("0.5");
-        BigDecimal positiveExpected = new BigDecimal(Math.asin(0.5), mc);
-        BigDecimal positiveResult = BigDecimalUtils.asin(positiveInput, mc);
-        assertEquals(positiveExpected, positiveResult, "Arcsine of 0.5 should match the expected result");
-
-        // Test negative input
-        BigDecimal negativeInput = new BigDecimal("-0.7");
-        BigDecimal negativeExpected = new BigDecimal(Math.asin(-0.7), mc);
-        BigDecimal negativeResult = BigDecimalUtils.asin(negativeInput, mc);
-        assertEquals(negativeExpected, negativeResult, "Arcsine of -0.7 should match the expected result");
-
-        // Test input of zero
-        BigDecimal zeroInput = new BigDecimal("0");
-        BigDecimal zeroExpected = new BigDecimal(Math.asin(0), mc);
-        BigDecimal zeroResult = BigDecimalUtils.asin(zeroInput, mc);
-        assertEquals(zeroExpected, zeroResult, "Arcsine of 0 should match the expected result");
+        MathContext mc2 = new MathContext(20);
+        BigDecimal sqrtTwo = new BigDecimal("1.4142135623730950488016887242096980785696718753769480731766797379907324784621070388503875343276415727");
+        BigDecimal halfPi = new BigDecimal("1.5707963267948966192313216916397514420985846996875529104874722961");
+        
+        //asin(1/sqrt(2))
+        BigDecimal x1 = BigDecimal.ONE.divide(sqrtTwo, mc2);
+        BigDecimal expected1 = halfPi;
+        BigDecimal result1 = BigDecimalUtils.asin(x1, mc2);
+        assertEquals(expected1, result1);
+        
+        //asin(-1/sqrt(2))
+        BigDecimal x2 = BigDecimal.ONE.divide(sqrtTwo, mc2).negate();
+        BigDecimal expected2 = halfPi.negate();
+        BigDecimal result2 = BigDecimalUtils.asin(x2, mc2);
+        assertEquals(expected2, result2);
+        
+        //asin(0)
+        BigDecimal x3 = BigDecimal.ZERO;
+        BigDecimal expected3 = BigDecimal.ZERO;
+        BigDecimal result3 = BigDecimalUtils.asin(x3, mc2);
+        assertEquals(expected3, result3);    
     }
-
+    
     @Test
     public void testAcos() {
         MathContext mc = new MathContext(5);

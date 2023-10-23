@@ -89,16 +89,36 @@ public class BigDecimalUtilsTest {
         assertEquals(expected, result);
     }
 
+    /**
+     * Test of BigDecimal min method, of class BigDecimalUtils
+     */
     @Test
     public void testMin() {
+        BigDecimal a = new BigDecimal("1.23456789");
+        BigDecimal b = new BigDecimal("2.34567890");
+        BigDecimal result = BigDecimalUtils.min(a, b);
+        assertEquals(a, result);
     }
 
+    /**
+     * Test of BigDecimal max method, of class BigDecimalUtils
+     */
     @Test
     public void testMax() {
+        BigDecimal a = new BigDecimal("1.23456789");
+        BigDecimal b = new BigDecimal("2.34567890");
+        BigDecimal result = BigDecimalUtils.max(a, b);
+        assertEquals(b, result);
     }
 
+    /**
+     * Test of BigDecimal abs method, of class BigDecimalUtils
+     */
     @Test
     public void testAbs() {
+        BigDecimal a = new BigDecimal("-1.23456789");
+        BigDecimal result = BigDecimalUtils.abs(a);
+        assertEquals(new BigDecimal("1.23456789"), result);
     }
 
     @Test
@@ -119,8 +139,15 @@ public class BigDecimalUtilsTest {
         assertEquals(expected, result);
     }
 
+    /**
+     * Test of BigDecimal sqrt method, of class BigDecimalUtils
+     */
     @Test
     public void testSqrt() {
+        BigDecimal a = new BigDecimal("9.0", mc);
+        BigDecimal expected = new BigDecimal("3.00000000", mc);
+        BigDecimal result = BigDecimalUtils.sqrt(a, mc);
+        assertEquals(expected, result);
     }
 
     // Tests for iroot
